@@ -1,0 +1,2212 @@
+/*######################################################################################################################*/
+
+/**********         Bài 1 : BẮT ĐẦU        **********/
+
+/*****        Responsive là gì?       *****/
+- Responsive là kỹ thuật giúp website hiển thị tương thích với nhiều kích thước
+màn hình khác nhau (Mobile, Tablet, PC, ...)
+- Tối ưu trải nghiệm người dùng:
+ 1. Hiển thị rõ ràng các thành phần (hình ảnh, cỡ chữ, nút bấm, ...)
+ 2. Ẩn / hiện các thành phần phù hợp theo kích thước màn hình
+
+/*****        Chúng ta sẽ làm gì?       *****/
+1. Dùng CSS thay đổi kích thước phù hợp cho các thành phần hiển thị trên website
+(hình ảnh, cỡ chữ, nút bấm, ...)
+2. Dùng CSS để ẩn / hiện các thành phần phù hợp theo kích thước màn hình
+
+/*****        Chuẩn bị công cụ làm việc       *****/
+- Chrome development tool
+- Viewport resizer chrome extension
+
+/*######################################################################################################################*/
+
+/**********         Bài 2 : VIEWPORT, @MEDIA, BREAKPOINT        **********/
+
+/*****        Khái niệm Viewport       *****/
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+width=device-width  kích thước chiều rộng bằng chiều rộng thiết bị
+initial-scale   kích thước ảnh không zoom
+
+/*****        Media query (@media)       *****/
+Là một chuỗi truy vấn để dễ dàng chọn ra kích thước màn hình cụ thể
+@media not|only mediatype and (mediafeature and|or|not mediafeature) {
+    CSS-Code;
+}
+1. Keywords:
+    - not
+    - only
+    - and
+    - or
+
+2. Mediatypes
+    - print
+    - screen
+    - speech
+    - all - default
+
+3. Media Features:
+    - min-width
+    - max-width
+    - ...
+
+4. Polyfill?
+style1
+/* @media screen and (max-width: 1024px) {
+    h1 {
+        color: red;
+    }
+} */
+
+h1 {
+    color: red;
+}
+style2
+h1 {
+    color: green;
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Responsive</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- PC -->
+        <link rel="stylesheet" media="(min-width: 1024px)" href="./style1.css">
+        <!-- Mobile -->
+        <link rel="stylesheet" media="(max-width: 740px)" href="./style2.css">
+        <!-- [if lt IE 9]>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <h1>Responsive web design</h1>
+    </body>
+</html>
+
+/*****        Khái niệm Breakpoints?       *****/
+Breakpoints là những điểm/vị trí mà bố cục website sẽ thay đổi - thích ứng để tạo
+nên giao diện responsive.
+body {
+    background-color: orange;
+    display: flex;
+    height: 100vh;
+}
+
+.mobile,
+.tablet,
+.pc {
+    margin: auto;
+    font-size: 100px;
+    color: #fff;
+    display: none;
+}
+
+/* Mobile: width < 740px */
+@media only screen and (max-width: 739px) {
+    .mobile {
+        display: block;
+    }
+}
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+    .tablet {
+        display: block;
+    }
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width: 1024px) {
+    .pc {
+        display: block;
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Responsive</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <h2 class="mobile">Mobile</h2>
+        <h2 class="tablet">tablet</h2>
+        <h2 class="pc">PC</h2>
+    </body>
+</html>
+
+/*****        Media queries: Px, rem hay em?       *****/
+body {
+    background-color: orange;
+    display: flex;
+    height: 100vh;
+}
+
+.mobile,
+.tablet,
+.pc {
+    margin: auto;
+    font-size: 100px;
+    color: #fff;
+    display: none;
+}
+
+/* Mobile: width < 740px */
+@media only screen and (max-width: 46.1875em) {
+    .mobile {
+        display: block;
+    }
+}
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+    .tablet {
+        display: block;
+    }
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width: 64em) {
+    .pc {
+        display: block;
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Responsive</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <h2 class="mobile">Mobile</h2>
+        <h2 class="tablet">tablet</h2>
+        <h2 class="pc">PC</h2>
+    </body>
+</html>
+
+/*######################################################################################################################*/
+
+/**********         Bài 3 : THỰC HÀNH NHỎ        **********/
+
+/*****        Học responsive qua thực hành       *****/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.main {
+    width: 1200px;
+    min-height: 100vh;
+    max-width: 100%;
+    margin: 10px auto 360px;
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+
+/* Product */
+.main_product {
+    display: flex;
+    padding: 10px;
+}
+
+.main_product-img {
+    width: 40%;
+    padding-top: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+.main_product-info {
+    width: 60%;
+    padding: 10px;
+}
+
+/* Column layout */
+.column-layout {
+    margin-top: 36px;
+    padding: 12px 0;
+    background-color: #fff;
+    display: flex;
+}
+
+.column-layout_category {
+    width: 20%;
+    padding: 0 16px;
+}
+
+.column-layout_container {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column-item {
+    width: 25%;
+    padding: 0 16px;
+}
+
+/* Feature layout */
+.feature-layout {
+    margin-top: 36px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.feature-item {
+    padding: 12px 16px;
+    margin-top: 16px;
+    flex-basis: 30%;
+}
+
+.feature-item:nth-child(1) {
+    background-color: rgb(192, 227, 222);
+}
+
+.feature-item:nth-child(2) {
+    background-color: rgb(227, 200, 192);
+}
+
+.feature-item:nth-child(3) {
+    background-color: rgb(226, 192, 227);
+}
+
+/* Mobile & Tablet: width < 1024px */
+@media only screen and (max-width: 63.9375em) {
+    .main_product {
+        flex-direction: column-reverse;
+    }
+    .main_product-info {
+        width: 100%;
+    }
+    .main_product-desc {
+        display: none;
+    }
+}
+
+/* Mobile: width < 740px */
+@media only screen and (max-width: 46.1875em) {
+    /* Product */
+    .main_product-img {
+        width: 95%;
+        padding-top: 85%;
+    }
+
+    /* Course */
+    .column-layout_container {
+        width: 100%;
+    }
+    .column-layout_category {
+        display: none;
+    }
+    .column-item {
+        width: 50%;
+        text-align: center;
+    }
+}
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+    /* Product */
+    .main_product-img {
+        width: 85%;
+        padding-top: 85%;
+    }
+
+    /* Course */
+    .column-item {
+        width: 33.333%;
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Responsive</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <!-- Product -->
+        <div class="main_product">
+            <div class="main_product-img" style="background-image: url(https://ohuichinhhang.net/storage/pagedata/100553/img/images/product/131_55A476AF-0D80-4FA8-924D-13BA0FF5047F.jpeg);"></div>
+
+            <div class="main_product-info">
+                <h1 class="main_product-name">
+                    Sữa rửa mặt ngăn ngừa lão hóa sớm OHUI Prime Advancer Gel Cleanser
+                </h1>
+                <h3 class="main_product-price">1.035.000đ</h3>
+                <p class="main_product-desc">
+                    Sữa rửa mặt OHUI Prime Advancer Gel Cleanser dạng gel với khả năng chuyển thành dạng bọt mịn sau khi gặp nước, đem lại hiệu quả sạch sâu cho làn da, làm sạch được cả bụi mịn mà không hề gây kích ứng, đồng thời dưỡng ẩm và làm dịu da.
+                </p>
+            </div>
+        </div>
+
+        <!-- Column layout -->
+        <div class="column-layout">
+            <div class="column-layout_category">
+                <h2>Category</h2>
+                <ul class="column-layout_list">
+                    <li class="column-layout_item">
+                        <a href="">JavaScript</a>
+                    </li>
+                    <li class="column-layout_item">
+                        <a href="">PHP</a>
+                    </li>
+                    <li class="column-layout_item">
+                        <a href="">Ruby</a>
+                    </li>
+                    <li class="column-layout_item">
+                        <a href="">Dart</a>
+                    </li>
+                    <li class="column-layout_item">
+                        <a href="">Python</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="column-layout_container">
+                <div class="column-item">
+                    <h2>Course 1</h2>
+                    <p>Dưỡng ẩm cho da và làm dịu da trước các kích ứng của nhiệt độ và môi trường.</p>
+                </div>
+                <div class="column-item">
+                    <h2>Course 2</h2>
+                    <p>Dưỡng ẩm cho da và làm dịu da trước các kích ứng của nhiệt độ và môi trường.</p>
+                </div>
+                <div class="column-item">
+                    <h2>Course 3</h2>
+                    <p>Dưỡng ẩm cho da và làm dịu da trước các kích ứng của nhiệt độ và môi trường.</p>
+                </div>
+                <div class="column-item">
+                    <h2>Course 4</h2>
+                    <p>Dưỡng ẩm cho da và làm dịu da trước các kích ứng của nhiệt độ và môi trường.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+/*######################################################################################################################*/
+
+/**********         Bài 4 : GRID SYSTEM        **********/
+
+/*****        Hệ thống lưới (Grid system)       *****/
+1. Xuất hiện từ đầu thế kỷ XX trong phong trào (Constructivism) nghệ thuật / kiến
+trúc
+2. Tạo nên các khung nền, hỗ trợ việc sắp xếp bố cục theo trật tự / thống nhất /
+cân bằng
+3. Hệ thống lưới thường gặp:
+    - Lưới nhiều cột (Mutilcolumn grid)
+    - Lưới một cột (Single column grid)
+    - Lưới module (Modular grid)
+    - Lưới đường cơ sở (Baseline grid)
+4. Vai trò
+    - Tổ chức: Có các đường căn gióng tiện lợi, dễ dàng sắp xếp các thành phần được
+    ngăn nắp
+    - Cân bằng: Dù là đối xứng / bất đối xứng, mang lại cái nhìn trực quan, đảm bảo
+    sự cân bằng
+    - Tách biệt thành phần: Phân chia nội dung, tạo khoảng cách các thành phần hiệu
+    quả
+5. Ứng dụng
+    - Lưới trong thiết kế UI UX: Vai trò đặc biệt quan trọng trong Responsive web
+    design
+    - Lưới trong in ấn: Google "Grid system"
+6. Responsive web design
+    - Grid: Thành phần cha
+    - Row: Dòng
+    - Colomn: Cột
+    - Gutter: Khoảng cách 2 phía của Column
+
+/*****        Grid system - Phần 2       *****/
+I. Thành phần chính (lý thuyết)
+1. Column - Cột
+Độ rộng sử dụng đơn vị % (tương đối) giúp linh động, dễ dàng tương thích với độ rộng
+khác nhau của các thiết bị. Số lượng cột trong grid system được xác định trước.
+(VD: PC 12|16 cột, tablet 8 cột, mobile 4 cột)
+
+2. Gutter - Đường ngăn cách (rãnh ngăn)
+Là khoảng cách 2 bên trái/phải của bố cục chính của website. Độ rộng phần lề thay đổi
+để phù hợp với các kích thước màn hình. VD: Phần lề lớn thích hợp cho màn hình lớn
+như PC, phần lề nhỏ thích hợp cho màn hình nhỏ như tablet, mobile
+
+3. Margin - Phần lề
+Là khoảng cách 2 bên trái/phải của bố cục chính của website. Độ rộng phần lề thay đổi
+để phù hợp với các kích thước màn hình. VD: Phần lề lớn thích hợp cho màn hình lớn
+như PC, phần lề nhỏ thích hợp cho màn hình nhỏ như Tablet, Mobile
+
+II. Thành phần chính (làm việc với CSS)
+1. Grid - Lưới (Thường là phần cha, chứa Row và Column)
+2. Row - Dòng (Dòng - chiều ngang, chứa Column)
+3. Column - Cột (Chứa nội dung/thành phần trên website)
+
+/*****        Tạo thư viện?       *****/
+Tạo thư viện CSS ứng dụng Grid system
+Kết quả:
+1. Tự tay xây dựng được thư viện CSS đầu tiên
+2. Biết cách ứng dụng Grid system vào xây dựng layout
+3. Hiểu về Grid layout của bootstrap
+
+/*****        Tạo đối tượng Grid       *****/
+Tạo đối tượng Grid
+1. Tạo class
+ - grid: full-width, chiếm hết chiều ngang đối tượng chứa (cha)
+ - wide: chiều ngang tối đa 1200px
+2. Đặt lại chiều rộng trên các thiết bị
+ @media (min-width: 740px) and (max-width: 1023px) {
+    .wide {
+        width: 644px;
+    }
+ }
+ @media (min-width: 1024px) and (max-width: 1239px) {
+    .wide {
+        width: 984px;
+    }
+}
+
+/*****        Tạo đối tượng Row       *****/
+Tạo đối tượng Row
+Vai trò:
+ 1. Chứa các columns, giúp các columns nằm theo chiều ngang
+ 2. Khi tổng chiều ngang columns vượt quá kích thước Row, cho columns xuống hàng
+ 3. Loại bỏ khoảng thừa do gutters tạo ra ở 2 phía
+CSS:
+.grid {
+    width: 100%;
+    display: block;
+    padding: 0;
+}
+
+.grid.wide {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -4px;
+    margin-right: -4px;
+}
+
+/* Tablet - PC low resolution */
+@media (min-width: 740px) and (max-width: 1023px) {
+    .wide {
+        width: 644px;
+    }
+}
+
+/* > Tablet */
+@media (min-width: 740px) {
+    .row {
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+}
+
+/* PC low resolution > */
+@media (min-width: 1113px) {
+    .row {
+        margin-left: -12px;
+        margin-right: -12px;
+    }
+}
+
+/* > PC low resolution */
+@media (min-width: 1024px) and (max-width: 1239px) {
+    .wide {
+        width: 984px;
+    }
+    .wide .row {
+        margin-left: -12px;
+        margin-right: -12px;
+    }
+}
+
+/*****        Tạo đối tượng Column       *****/
+Tạo đối tượng Column
+Vai trò:
+ - Chứa các thành phần trên website
+CSS:
+    .grid {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+
+    .grid.wide {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+
+    .col {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .c-0 {
+        display: none;
+    }
+
+    .c-1 {
+        flex:0 0 8.33333%;
+        max-width: 8.33333%;
+    }
+
+    .c-2 {
+        flex:0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+
+    .c-3 {
+        flex:0 0 25%;
+        max-width: 25%;
+    }
+
+    .c-4 {
+        flex:0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+
+    .c-5 {
+        flex:0 0 41.66667%;
+        max-width: 41.66667%;
+    }
+
+    .c-6 {
+        flex:0 0 50%;
+        max-width: 50%;
+    }
+
+    .c-7 {
+        flex:0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+
+    .c-8 {
+        flex:0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+
+    .c-9 {
+        flex:0 0 75%;
+        max-width: 75%;
+    }
+
+    .c-10 {
+        flex:0 0 83.33333%;
+        max-width: 83.33333%;
+    }
+
+    .c-11 {
+        flex:0 0 91.66667%;
+        max-width: 91.66667%;
+    }
+
+    .c-12 {
+        flex:0 0 100%;
+        max-width: 100%;
+    }
+
+    /* > Tablet */
+    @media (min-width: 740px) {
+        .row {
+            margin-left: -8px;
+            margin-right: -8px;
+        }
+        .col {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .m-0 {
+            display: none;
+        }
+        .m-1,
+        .m-2,
+        .m-3,
+        .m-4,
+        .m-5,
+        .m-6,
+        .m-7,
+        .m-8,
+        .m-9,
+        .m-10,
+        .m-11,
+        .m-12 {
+            display: block;
+        }
+        .m-1 {
+            flex:0 0 8.33333%;
+            max-width: 8.33333%;
+        }    
+        .m-2 {
+            flex:0 0 16.66667%;
+            max-width: 16.66667%;
+        }   
+        .m-3 {
+            flex:0 0 25%;
+            max-width: 25%;
+        }  
+        .m-4 {
+            flex:0 0 33.33333%;
+            max-width: 33.33333%;
+        }
+        .m-5 {
+            flex:0 0 41.66667%;
+            max-width: 41.66667%;
+        }
+        .m-6 {
+            flex:0 0 50%;
+            max-width: 50%;
+        }
+        .m-7 {
+            flex:0 0 58.33333%;
+            max-width: 58.33333%;
+        }
+        .m-8 {
+            flex:0 0 66.66667%;
+            max-width: 66.66667%;
+        }
+        .m-9 {
+            flex:0 0 75%;
+            max-width: 75%;
+        }
+        .m-10 {
+            flex:0 0 83.33333%;
+            max-width: 83.33333%;
+        }
+        .m-11 {
+            flex:0 0 91.66667%;
+            max-width: 91.66667%;
+        }
+        .m-12 {
+            flex:0 0 100%;
+            max-width: 100%;
+        }
+    }
+
+    /* PC medium resolution > */
+    @media (min-width: 1113px) {
+        .row {
+            margin-left: -12px;
+            margin-right: -12px;
+        }
+        .col {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        .l-0 {
+            display: none;
+        }
+        .l-1,
+        .l-2,
+        .l-3,
+        .l-4,
+        .l-5,
+        .l-6,
+        .l-7,
+        .l-8,
+        .l-9,
+        .l-10,
+        .l-11,
+        .l-12 {
+            display: block;
+        }
+        .l-1 {
+            flex:0 0 8.33333%;
+            max-width: 8.33333%;
+        }    
+        .l-2 {
+            flex:0 0 16.66667%;
+            max-width: 16.66667%;
+        }   
+        .l-3 {
+            flex:0 0 25%;
+            max-width: 25%;
+        }  
+        .l-4 {
+            flex:0 0 33.33333%;
+            max-width: 33.33333%;
+        }
+        .l-5 {
+            flex:0 0 41.66667%;
+            max-width: 41.66667%;
+        }
+        .l-6 {
+            flex:0 0 50%;
+            max-width: 50%;
+        }
+        .l-7 {
+            flex:0 0 58.33333%;
+            max-width: 58.33333%;
+        }
+        .l-8 {
+            flex:0 0 66.66667%;
+            max-width: 66.66667%;
+        }
+        .l-9 {
+            flex:0 0 75%;
+            max-width: 75%;
+        }
+        .l-10 {
+            flex:0 0 83.33333%;
+            max-width: 83.33333%;
+        }
+        .l-11 {
+            flex:0 0 91.66667%;
+            max-width: 91.66667%;
+        }
+        .l-12 {
+            flex:0 0 100%;
+            max-width: 100%;
+        }
+    }
+
+    /* Tablet - PC low resolution */
+    @media (min-width: 740px) and (max-width: 1023px) {
+        .wide {
+            width: 644px;
+        }
+    }
+
+    /* > PC low resolution */
+    @media (min-width: 1024px) and (max-width: 1239px) {
+        .wide {
+            width: 984px;
+        }
+        .wide .row {
+            margin-left: -12px;
+            margin-right: -12px;
+        }
+        .wide .col {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        .wide .l-0 {
+            display: none;
+        }
+        .wide .l-1,
+        .wide .l-2,
+        .wide .l-3,
+        .wide .l-4,
+        .wide .l-5,
+        .wide .l-6,
+        .wide .l-7,
+        .wide .l-8,
+        .wide .l-9,
+        .wide .l-10,
+        .wide .l-11,
+        .wide .l-12 {
+            display: block;
+        }
+        .wide .l-1 {
+            flex:0 0 8.33333%;
+            max-width: 8.33333%;
+        }    
+        .wide .l-2 {
+            flex:0 0 16.66667%;
+            max-width: 16.66667%;
+        }   
+        .wide .l-3 {
+            flex:0 0 25%;
+            max-width: 25%;
+        }  
+        .wide .l-4 {
+            flex:0 0 33.33333%;
+            max-width: 33.33333%;
+        }
+        .wide .l-5 {
+            flex:0 0 41.66667%;
+            max-width: 41.66667%;
+        }
+        .wide .l-6 {
+            flex:0 0 50%;
+            max-width: 50%;
+        }
+        .wide .l-7 {
+            flex:0 0 58.33333%;
+            max-width: 58.33333%;
+        }
+        .wide .l-8 {
+            flex:0 0 66.66667%;
+            max-width: 66.66667%;
+        }
+        .wide .l-9 {
+            flex:0 0 75%;
+            max-width: 75%;
+        }
+        .wide .l-10 {
+            flex:0 0 83.33333%;
+            max-width: 83.33333%;
+        }
+        .wide .l-11 {
+            flex:0 0 91.66667%;
+            max-width: 91.66667%;
+        }
+        .wide .l-12 {
+            flex:0 0 100%;
+            max-width: 100%;
+        }
+    }
+
+HTML:
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>Responsive</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="./grid.css">
+            <style>
+                * {
+                    box-sizing: border-box;
+                }
+                body {
+                    margin: 0;
+                }
+                .container {
+                    text-align: center;
+                }
+                .course-item {
+                    background-color: orange;
+                    height: 260px;
+                }
+                h1 {
+                    color: #fff;
+                    line-height: 260px;
+                    margin: 0;
+                }
+                @media (max-width: 1023px) {
+                    .course-item {
+                        margin-top: 16px;
+                    }
+                }
+                .category {
+                    background-color: aquamarine;
+                    height: 260px;
+                }
+                ul {
+                    margin-top: 0;
+                }
+            </style>
+        </head>
+
+        <!-- 
+            Column: .col
+            Prefix class:
+            - c - mobile
+            - m - tablet
+            - l - PC
+        -->
+
+        <body>
+            <div class="grid wide container">
+                <div class="row">
+                    <div class="col l-3 m-0 c-0">
+                        <div class="category">
+                            <ul>
+                                <li>JavaScript</li>
+                                <li>HTML, CSS</li>
+                                <li>PHP</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col l-9 m-12 c-12">
+                        <div class="row">
+                            <div class="col l-4 m-6 c-12">
+                                <div class="course-item">
+                                    <h1>Course 1</h1>
+                                </div>
+                            </div>
+
+                            <div class="col l-4 m-6 c-12">
+                                <div class="course-item">
+                                    <h1>Course 2</h1>
+                                </div>
+                            </div>
+
+                            <div class="col l-4 m-6 c-12">
+                                <div class="course-item">
+                                    <h1>Course 3</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
+
+/*****        Column offset       *****/
+CSS:
+    .grid {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+
+    .grid.wide {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+
+    .col {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .c-0 {
+        display: none;
+    }
+
+    .c-1 {
+        flex:0 0 8.33333%;
+        max-width: 8.33333%;
+    }
+
+    .c-2 {
+        flex:0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+
+    .c-3 {
+        flex:0 0 25%;
+        max-width: 25%;
+    }
+
+    .c-4 {
+        flex:0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+
+    .c-5 {
+        flex:0 0 41.66667%;
+        max-width: 41.66667%;
+    }
+
+    .c-6 {
+        flex:0 0 50%;
+        max-width: 50%;
+    }
+
+    .c-7 {
+        flex:0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+
+    .c-8 {
+        flex:0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+
+    .c-9 {
+        flex:0 0 75%;
+        max-width: 75%;
+    }
+
+    .c-10 {
+        flex:0 0 83.33333%;
+        max-width: 83.33333%;
+    }
+
+    .c-11 {
+        flex:0 0 91.66667%;
+        max-width: 91.66667%;
+    }
+
+    .c-12 {
+        flex:0 0 100%;
+        max-width: 100%;
+    }
+
+    .c-o-1 {
+        margin-left: 8.33333%;
+    }
+
+    .c-o-2 {
+        margin-left: 16.66667%;
+    }
+
+    .c-o-3 {
+        margin-left: 25%;
+    }
+
+    .c-o-4 {
+        margin-left: 33.33333%;
+    }
+
+    .c-o-5 {
+        margin-left: 41.66667%;
+    }
+
+    .c-o-6 {
+        margin-left: 50%;
+    }
+
+    .c-o-7 {
+        margin-left: 58.33333%;
+    }
+
+    .c-o-8 {
+        margin-left: 66.66667%;
+    }
+
+    .c-o-9 {
+        margin-left: 75%;
+    }
+
+    .c-o-10 {
+        margin-left: 83.33333%;
+    }
+
+    .c-o-11 {
+        margin-left: 91.66667%;
+    }
+
+    /* > Tablet */
+    @media (min-width: 740px) {
+        .row {
+            margin-left: -8px;
+            margin-right: -8px;
+        }
+        .col {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .m-0 {
+            display: none;
+        }
+        .m-1,
+        .m-2,
+        .m-3,
+        .m-4,
+        .m-5,
+        .m-6,
+        .m-7,
+        .m-8,
+        .m-9,
+        .m-10,
+        .m-11,
+        .m-12 {
+            display: block;
+        }
+        .m-1 {
+            flex:0 0 8.33333%;
+            max-width: 8.33333%;
+        }    
+        .m-2 {
+            flex:0 0 16.66667%;
+            max-width: 16.66667%;
+        }   
+        .m-3 {
+            flex:0 0 25%;
+            max-width: 25%;
+        }  
+        .m-4 {
+            flex:0 0 33.33333%;
+            max-width: 33.33333%;
+        }
+        .m-5 {
+            flex:0 0 41.66667%;
+            max-width: 41.66667%;
+        }
+        .m-6 {
+            flex:0 0 50%;
+            max-width: 50%;
+        }
+        .m-7 {
+            flex:0 0 58.33333%;
+            max-width: 58.33333%;
+        }
+        .m-8 {
+            flex:0 0 66.66667%;
+            max-width: 66.66667%;
+        }
+        .m-9 {
+            flex:0 0 75%;
+            max-width: 75%;
+        }
+        .m-10 {
+            flex:0 0 83.33333%;
+            max-width: 83.33333%;
+        }
+        .m-11 {
+            flex:0 0 91.66667%;
+            max-width: 91.66667%;
+        }
+        .m-12 {
+            flex:0 0 100%;
+            max-width: 100%;
+        }
+        .m-o-1 {
+            margin-left: 8.33333%;
+        }
+        .m-o-2 {
+            margin-left: 16.66667%;
+        }
+        .m-o-3 {
+            margin-left: 25%;
+        }
+        .m-o-4 {
+            margin-left: 33.33333%;
+        }
+        .m-o-5 {
+            margin-left: 41.66667%;
+        }
+        .m-o-6 {
+            margin-left: 50%;
+        }
+        .m-o-7 {
+            margin-left: 58.33333%;
+        }
+        .m-o-8 {
+            margin-left: 66.66667%;
+        }
+        .m-o-9 {
+            margin-left: 75%;
+        }
+        .m-o-10 {
+            margin-left: 83.33333%;
+        }
+        .m-o-11 {
+            margin-left: 91.66667%;
+        }
+    }
+
+    /* PC medium resolution > */
+    @media (min-width: 1113px) {
+        .row {
+            margin-left: -12px;
+            margin-right: -12px;
+        }
+        .col {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        .l-0 {
+            display: none;
+        }
+        .l-1,
+        .l-2,
+        .l-3,
+        .l-4,
+        .l-5,
+        .l-6,
+        .l-7,
+        .l-8,
+        .l-9,
+        .l-10,
+        .l-11,
+        .l-12 {
+            display: block;
+        }
+        .l-1 {
+            flex:0 0 8.33333%;
+            max-width: 8.33333%;
+        }    
+        .l-2 {
+            flex:0 0 16.66667%;
+            max-width: 16.66667%;
+        }   
+        .l-3 {
+            flex:0 0 25%;
+            max-width: 25%;
+        }  
+        .l-4 {
+            flex:0 0 33.33333%;
+            max-width: 33.33333%;
+        }
+        .l-5 {
+            flex:0 0 41.66667%;
+            max-width: 41.66667%;
+        }
+        .l-6 {
+            flex:0 0 50%;
+            max-width: 50%;
+        }
+        .l-7 {
+            flex:0 0 58.33333%;
+            max-width: 58.33333%;
+        }
+        .l-8 {
+            flex:0 0 66.66667%;
+            max-width: 66.66667%;
+        }
+        .l-9 {
+            flex:0 0 75%;
+            max-width: 75%;
+        }
+        .l-10 {
+            flex:0 0 83.33333%;
+            max-width: 83.33333%;
+        }
+        .l-11 {
+            flex:0 0 91.66667%;
+            max-width: 91.66667%;
+        }
+        .l-12 {
+            flex:0 0 100%;
+            max-width: 100%;
+        }
+        .l-o-1 {
+            margin-left: 8.33333%;
+        }
+        .l-o-2 {
+            margin-left: 16.66667%;
+        }
+        .l-o-3 {
+            margin-left: 25%;
+        }
+        .l-o-4 {
+            margin-left: 33.33333%;
+        }
+        .l-o-5 {
+            margin-left: 41.66667%;
+        }
+        .l-o-6 {
+            margin-left: 50%;
+        }
+        .l-o-7 {
+            margin-left: 58.33333%;
+        }
+        .l-o-8 {
+            margin-left: 66.66667%;
+        }
+        .l-o-9 {
+            margin-left: 75%;
+        }
+        .l-o-10 {
+            margin-left: 83.33333%;
+        }
+        .l-o-11 {
+            margin-left: 91.66667%;
+        }
+    }
+
+    /* Tablet - PC low resolution */
+    @media (min-width: 740px) and (max-width: 1023px) {
+        .wide {
+            width: 644px;
+        }
+    }
+
+    /* > PC low resolution */
+    @media (min-width: 1024px) and (max-width: 1239px) {
+        .wide {
+            width: 984px;
+        }
+        .wide .row {
+            margin-left: -12px;
+            margin-right: -12px;
+        }
+        .wide .col {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        .wide .l-0 {
+            display: none;
+        }
+        .wide .l-1,
+        .wide .l-2,
+        .wide .l-3,
+        .wide .l-4,
+        .wide .l-5,
+        .wide .l-6,
+        .wide .l-7,
+        .wide .l-8,
+        .wide .l-9,
+        .wide .l-10,
+        .wide .l-11,
+        .wide .l-12 {
+            display: block;
+        }
+        .wide .l-1 {
+            flex:0 0 8.33333%;
+            max-width: 8.33333%;
+        }    
+        .wide .l-2 {
+            flex:0 0 16.66667%;
+            max-width: 16.66667%;
+        }   
+        .wide .l-3 {
+            flex:0 0 25%;
+            max-width: 25%;
+        }  
+        .wide .l-4 {
+            flex:0 0 33.33333%;
+            max-width: 33.33333%;
+        }
+        .wide .l-5 {
+            flex:0 0 41.66667%;
+            max-width: 41.66667%;
+        }
+        .wide .l-6 {
+            flex:0 0 50%;
+            max-width: 50%;
+        }
+        .wide .l-7 {
+            flex:0 0 58.33333%;
+            max-width: 58.33333%;
+        }
+        .wide .l-8 {
+            flex:0 0 66.66667%;
+            max-width: 66.66667%;
+        }
+        .wide .l-9 {
+            flex:0 0 75%;
+            max-width: 75%;
+        }
+        .wide .l-10 {
+            flex:0 0 83.33333%;
+            max-width: 83.33333%;
+        }
+        .wide .l-11 {
+            flex:0 0 91.66667%;
+            max-width: 91.66667%;
+        }
+        .wide .l-12 {
+            flex:0 0 100%;
+            max-width: 100%;
+        }
+        .wide .l-o-1 {
+            margin-left: 8.33333%;
+        }
+        .wide .l-o-2 {
+            margin-left: 16.66667%;
+        }
+        .wide .l-o-3 {
+            margin-left: 25%;
+        }
+        .wide .l-o-4 {
+            margin-left: 33.33333%;
+        }
+        .wide .l-o-5 {
+            margin-left: 41.66667%;
+        }
+        .wide .l-o-6 {
+            margin-left: 50%;
+        }
+        .wide .l-o-7 {
+            margin-left: 58.33333%;
+        }
+        .wide .l-o-8 {
+            margin-left: 66.66667%;
+        }
+        .wide .l-o-9 {
+            margin-left: 75%;
+        }
+        .wide .l-o-10 {
+            margin-left: 83.33333%;
+        }
+        .wide .l-o-11 {
+            margin-left: 91.66667%;
+        }
+    }
+
+HTML:
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>Responsive</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="./grid.css">
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                .container {
+                    background-color: antiquewhite;
+                    min-height: 100vh;
+                }
+                .my-column {
+                    text-align: center;
+                    min-height: 50vh;
+                    background-color: orange;
+                }
+            </style>
+        </head>
+
+        <body>
+
+            <div class="grid wide container">
+                <div class="row">
+                    <div class="col l-3 m-3 l-o-3 m-o-6">
+                        <div class="my-column">
+                            <h1>Column 1</h1>
+                        </div>
+                    </div>
+                    <div class="col l-3 m-3">
+                        <div class="my-column">
+                            <h1>Column 2</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </body>
+    </html>
+
+/*****        No gutters       *****/
+CSS:
+    .grid {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+
+    .grid.wide {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+
+    .row.no-gutters {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .col {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .row.no-gutters .col {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .c-0 {
+        display: none;
+    }
+
+    .c-1 {
+        flex:0 0 8.33333%;
+        max-width: 8.33333%;
+    }
+
+    .c-2 {
+        flex:0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+
+    .c-3 {
+        flex:0 0 25%;
+        max-width: 25%;
+    }
+
+    .c-4 {
+        flex:0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+
+    .c-5 {
+        flex:0 0 41.66667%;
+        max-width: 41.66667%;
+    }
+
+    .c-6 {
+        flex:0 0 50%;
+        max-width: 50%;
+    }
+
+    .c-7 {
+        flex:0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+
+    .c-8 {
+        flex:0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+
+    .c-9 {
+        flex:0 0 75%;
+        max-width: 75%;
+    }
+
+    .c-10 {
+        flex:0 0 83.33333%;
+        max-width: 83.33333%;
+    }
+
+    .c-11 {
+        flex:0 0 91.66667%;
+        max-width: 91.66667%;
+    }
+
+    .c-12 {
+        flex:0 0 100%;
+        max-width: 100%;
+    }
+
+    .c-o-1 {
+        margin-left: 8.33333%;
+    }
+
+    .c-o-2 {
+        margin-left: 16.66667%;
+    }
+
+    .c-o-3 {
+        margin-left: 25%;
+    }
+
+    .c-o-4 {
+        margin-left: 33.33333%;
+    }
+
+    .c-o-5 {
+        margin-left: 41.66667%;
+    }
+
+    .c-o-6 {
+        margin-left: 50%;
+    }
+
+    .c-o-7 {
+        margin-left: 58.33333%;
+    }
+
+    .c-o-8 {
+        margin-left: 66.66667%;
+    }
+
+    .c-o-9 {
+        margin-left: 75%;
+    }
+
+    .c-o-10 {
+        margin-left: 83.33333%;
+    }
+
+    .c-o-11 {
+        margin-left: 91.66667%;
+    }
+
+    /* > Tablet */
+    @media (min-width: 740px) {
+        .row {
+            margin-left: -8px;
+            margin-right: -8px;
+        }
+        .col {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .m-0 {
+            display: none;
+        }
+        .m-1,
+        .m-2,
+        .m-3,
+        .m-4,
+        .m-5,
+        .m-6,
+        .m-7,
+        .m-8,
+        .m-9,
+        .m-10,
+        .m-11,
+        .m-12 {
+            display: block;
+        }
+        .m-1 {
+            flex:0 0 8.33333%;
+            max-width: 8.33333%;
+        }    
+        .m-2 {
+            flex:0 0 16.66667%;
+            max-width: 16.66667%;
+        }   
+        .m-3 {
+            flex:0 0 25%;
+            max-width: 25%;
+        }  
+        .m-4 {
+            flex:0 0 33.33333%;
+            max-width: 33.33333%;
+        }
+        .m-5 {
+            flex:0 0 41.66667%;
+            max-width: 41.66667%;
+        }
+        .m-6 {
+            flex:0 0 50%;
+            max-width: 50%;
+        }
+        .m-7 {
+            flex:0 0 58.33333%;
+            max-width: 58.33333%;
+        }
+        .m-8 {
+            flex:0 0 66.66667%;
+            max-width: 66.66667%;
+        }
+        .m-9 {
+            flex:0 0 75%;
+            max-width: 75%;
+        }
+        .m-10 {
+            flex:0 0 83.33333%;
+            max-width: 83.33333%;
+        }
+        .m-11 {
+            flex:0 0 91.66667%;
+            max-width: 91.66667%;
+        }
+        .m-12 {
+            flex:0 0 100%;
+            max-width: 100%;
+        }
+        .m-o-1 {
+            margin-left: 8.33333%;
+        }
+        .m-o-2 {
+            margin-left: 16.66667%;
+        }
+        .m-o-3 {
+            margin-left: 25%;
+        }
+        .m-o-4 {
+            margin-left: 33.33333%;
+        }
+        .m-o-5 {
+            margin-left: 41.66667%;
+        }
+        .m-o-6 {
+            margin-left: 50%;
+        }
+        .m-o-7 {
+            margin-left: 58.33333%;
+        }
+        .m-o-8 {
+            margin-left: 66.66667%;
+        }
+        .m-o-9 {
+            margin-left: 75%;
+        }
+        .m-o-10 {
+            margin-left: 83.33333%;
+        }
+        .m-o-11 {
+            margin-left: 91.66667%;
+        }
+    }
+
+    /* PC medium resolution > */
+    @media (min-width: 1113px) {
+        .row {
+            margin-left: -12px;
+            margin-right: -12px;
+        }
+        .col {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        .l-0 {
+            display: none;
+        }
+        .l-1,
+        .l-2,
+        .l-3,
+        .l-4,
+        .l-5,
+        .l-6,
+        .l-7,
+        .l-8,
+        .l-9,
+        .l-10,
+        .l-11,
+        .l-12 {
+            display: block;
+        }
+        .l-1 {
+            flex:0 0 8.33333%;
+            max-width: 8.33333%;
+        }    
+        .l-2 {
+            flex:0 0 16.66667%;
+            max-width: 16.66667%;
+        }   
+        .l-3 {
+            flex:0 0 25%;
+            max-width: 25%;
+        }  
+        .l-4 {
+            flex:0 0 33.33333%;
+            max-width: 33.33333%;
+        }
+        .l-5 {
+            flex:0 0 41.66667%;
+            max-width: 41.66667%;
+        }
+        .l-6 {
+            flex:0 0 50%;
+            max-width: 50%;
+        }
+        .l-7 {
+            flex:0 0 58.33333%;
+            max-width: 58.33333%;
+        }
+        .l-8 {
+            flex:0 0 66.66667%;
+            max-width: 66.66667%;
+        }
+        .l-9 {
+            flex:0 0 75%;
+            max-width: 75%;
+        }
+        .l-10 {
+            flex:0 0 83.33333%;
+            max-width: 83.33333%;
+        }
+        .l-11 {
+            flex:0 0 91.66667%;
+            max-width: 91.66667%;
+        }
+        .l-12 {
+            flex:0 0 100%;
+            max-width: 100%;
+        }
+        .l-o-1 {
+            margin-left: 8.33333%;
+        }
+        .l-o-2 {
+            margin-left: 16.66667%;
+        }
+        .l-o-3 {
+            margin-left: 25%;
+        }
+        .l-o-4 {
+            margin-left: 33.33333%;
+        }
+        .l-o-5 {
+            margin-left: 41.66667%;
+        }
+        .l-o-6 {
+            margin-left: 50%;
+        }
+        .l-o-7 {
+            margin-left: 58.33333%;
+        }
+        .l-o-8 {
+            margin-left: 66.66667%;
+        }
+        .l-o-9 {
+            margin-left: 75%;
+        }
+        .l-o-10 {
+            margin-left: 83.33333%;
+        }
+        .l-o-11 {
+            margin-left: 91.66667%;
+        }
+    }
+
+    /* Tablet - PC low resolution */
+    @media (min-width: 740px) and (max-width: 1023px) {
+        .wide {
+            width: 644px;
+        }
+    }
+
+    /* > PC low resolution */
+    @media (min-width: 1024px) and (max-width: 1239px) {
+        .wide {
+            width: 984px;
+        }
+        .wide .row {
+            margin-left: -12px;
+            margin-right: -12px;
+        }
+        .wide .col {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        .wide .l-0 {
+            display: none;
+        }
+        .wide .l-1,
+        .wide .l-2,
+        .wide .l-3,
+        .wide .l-4,
+        .wide .l-5,
+        .wide .l-6,
+        .wide .l-7,
+        .wide .l-8,
+        .wide .l-9,
+        .wide .l-10,
+        .wide .l-11,
+        .wide .l-12 {
+            display: block;
+        }
+        .wide .l-1 {
+            flex:0 0 8.33333%;
+            max-width: 8.33333%;
+        }    
+        .wide .l-2 {
+            flex:0 0 16.66667%;
+            max-width: 16.66667%;
+        }   
+        .wide .l-3 {
+            flex:0 0 25%;
+            max-width: 25%;
+        }  
+        .wide .l-4 {
+            flex:0 0 33.33333%;
+            max-width: 33.33333%;
+        }
+        .wide .l-5 {
+            flex:0 0 41.66667%;
+            max-width: 41.66667%;
+        }
+        .wide .l-6 {
+            flex:0 0 50%;
+            max-width: 50%;
+        }
+        .wide .l-7 {
+            flex:0 0 58.33333%;
+            max-width: 58.33333%;
+        }
+        .wide .l-8 {
+            flex:0 0 66.66667%;
+            max-width: 66.66667%;
+        }
+        .wide .l-9 {
+            flex:0 0 75%;
+            max-width: 75%;
+        }
+        .wide .l-10 {
+            flex:0 0 83.33333%;
+            max-width: 83.33333%;
+        }
+        .wide .l-11 {
+            flex:0 0 91.66667%;
+            max-width: 91.66667%;
+        }
+        .wide .l-12 {
+            flex:0 0 100%;
+            max-width: 100%;
+        }
+        .wide .l-o-1 {
+            margin-left: 8.33333%;
+        }
+        .wide .l-o-2 {
+            margin-left: 16.66667%;
+        }
+        .wide .l-o-3 {
+            margin-left: 25%;
+        }
+        .wide .l-o-4 {
+            margin-left: 33.33333%;
+        }
+        .wide .l-o-5 {
+            margin-left: 41.66667%;
+        }
+        .wide .l-o-6 {
+            margin-left: 50%;
+        }
+        .wide .l-o-7 {
+            margin-left: 58.33333%;
+        }
+        .wide .l-o-8 {
+            margin-left: 66.66667%;
+        }
+        .wide .l-o-9 {
+            margin-left: 75%;
+        }
+        .wide .l-o-10 {
+            margin-left: 83.33333%;
+        }
+        .wide .l-o-11 {
+            margin-left: 91.66667%;
+        }
+    }
+
+HTML:
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>Responsive</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="./grid.css">
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                .container {
+                    background-color: antiquewhite;
+                    min-height: 100vh;
+                }
+                .my-column {
+                    text-align: center;
+                    min-height: 50vh;
+                    background-color: orange;
+                }
+            </style>
+        </head>
+
+        <body>
+
+            <div class="grid wide container">
+                <div class="row no-gutters">
+                    <div class="col l-4 m-4 c-6">
+                        <div class="my-column">
+                            <h1>Column 1</h1>
+                        </div>
+                    </div>
+                    <div class="col l-4 m-4 c-6">
+                        <div class="my-column">
+                            <h1>Column 2</h1>
+                        </div>
+                    </div>
+                    <div class="col l-4 m-4 c-6">
+                        <div class="my-column">
+                            <h1>Column 3</h1>
+                        </div>
+                    </div>
+                    <div class="col l-4 m-4 c-6">
+                        <div class="my-column">
+                            <h1>Column 4</h1>
+                        </div>
+                    </div>
+                    <div class="col l-4 m-4 c-6">
+                        <div class="my-column">
+                            <h1>Column 5</h1>
+                        </div>
+                    </div>
+                    <div class="col l-4 m-4 c-6">
+                        <div class="my-column">
+                            <h1>Column 6</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </body>
+    </html>
+
+/*######################################################################################################################*/
+
+/**********         Bài 5 : ÁP DỤNG VÀO THỰC TẾ        **********/
+
+/*****        Giới thiệu chương       *****/
+
+/*****        Sử dụng với các website khác       *****/
+./demo
+
+/*****        Ví dụ dựng layout - Level 1       *****/
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+
+  <body>
+    <div class="grid wide">
+        <div class="row">
+            <div class="col l-5 m-5 c-12">
+                <div class="item">IMAGE</div>
+            </div>
+            <div class="col l-7 m-7 c-12">
+                <div class="item">
+                    INFO
+                    <div class="row">
+                        <div class="col l-4">
+                            <div>Something</div>
+                        </div>
+                        <div class="col l-4">
+                            <div>Something</div>
+                        </div>
+                        <div class="col l-4">
+                            <div>Something</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+  </body>
+</html>
+
+/*****        Ví dụ dựng layout - Level 2       *****/
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+
+  <body>
+    <div class="grid wide">
+        <div class="row">
+            <div class="col l-2 m-0 c-0">
+                <div class="item">Category</div>
+            </div>
+            
+            <div class="col l-10 m-12 c-12">
+                <div class="content">
+                    <!-- Sắp xếp theo / Giá / 1/1 -->
+                    <div class="row">
+                        <div class="col l-2-4 m-4 c-12">
+                            <div class="item">Item 1</div>
+                        </div>
+                        <div class="col l-2-4 m-4 c-12">
+                            <div class="item">Item 2</div>
+                        </div>
+                        <div class="col l-2-4 m-4 c-12">
+                            <div class="item">Item 3</div>
+                        </div>
+                        <div class="col l-2-4 m-4 c-12">
+                            <div class="item">Item 4</div>
+                        </div>
+                        <div class="col l-2-4 m-4 c-12">
+                            <div class="item">Item 5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+  </body>
+</html>
+
+/*****        Ví dụ dựng layout - Level 3       *****/
+style.css:
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .item {
+        margin-top: 16px;
+        font-size: 40px;
+        color: #fff;
+        text-align: center;
+        min-height: 180px;
+        line-height: 180px;
+        background-color: orange;
+    }
+
+    .main {
+        display: flex;
+        padding: 0 32px;
+    }
+
+    .sidebar{
+        width: 300px;
+        background-color: aqua;
+    }
+
+    .content {
+        flex: 1;
+        background-color: #666;
+    }
+
+    @media (min-width: 740px) and (max-width: 1023px) {
+        .hide-on-tablet {
+            display: none;
+        }
+    }
+
+    @media (max-width: 739px) {
+        .hide-on-mobile {
+            display: none;
+        }
+    }
+
+html:
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="./assets/css/grid.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
+
+    <body>
+        <div class="main">
+            <div class="sidebar hide-on-tablet hide-on-mobile">
+                <h1>SIDEBAR</h1>
+            </div>
+
+            <div class="content">
+                <h1>14. Countdown Timer (96)</h1>
+                <p>You can see the designs from the challenge below. Check out our Chrome extension to upload and browse similar designs easily.</p>
+
+                <!-- Grid content -->
+                <div class="grid">
+                    <div class="row">
+                        <div class="col l-2-4 m-4 c-12">
+                            <div class="item">Item 1</div>
+                        </div>
+                        <div class="col l-2-4 m-4 c-12">
+                            <div class="item">Item 2</div>
+                        </div>
+                        <div class="col l-2-4 m-4 c-12">
+                            <div class="item">Item 3</div>
+                        </div>
+                        <div class="col l-2-4 m-4 c-12">
+                            <div class="item">Item 4</div>
+                        </div>
+                        <div class="col l-2-4 m-4 c-12">
+                            <div class="item">Item 5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </body>
+    </html>

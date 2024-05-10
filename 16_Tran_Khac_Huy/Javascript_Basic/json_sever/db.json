@@ -1,0 +1,14 @@
+{
+    "courses": [
+        {
+            "id": 1,
+            "name": "Lộ trình học",
+            "description": "Để bắt đầu một cách thuận lợi, bạn nên tập trung vào một lộ trình học."
+        },
+        {
+            "id": 2,
+            "name": "Lộ trình học Front-end",
+            "description": "Lập trình viên Front-end là người xây dựng ra giao diện websites. Trong phần này F8 sẽ chia sẻ cho bạn lộ trình để trở thành lập trình viên Front-end nhé."
+        }
+    ]
+}

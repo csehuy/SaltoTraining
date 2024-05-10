@@ -1,0 +1,1554 @@
+/*######################################################################################################################*/
+
+/**********         Bài 1 : BẮT ĐẦU        **********/
+
+/*****        Bạn sẽ làm được gì sau khóa học?       *****/
+1. Xây dựng được giao diện website
+2. Phân tích giao diện website
+3. Đặt tên class theo chuẩn BEM
+4. Xây dựng layout với Flexbox
+5. Làm hiệu ứng với animation
+6. Xây dựng giao diện responsive
+7. Rất nhiều các kỹ thuật nâng cao khác
+
+/*****        Tìm hiểu về HTML, CSS       *****/
+HTML là chữ viết tắt của Hypertext Markup Language. Nó giúp người dùng
+tạo và cấu trúc các thành phần trong trang web hoặc ứng dụng, phân chia
+các đoạn văn, heading, links, blockquotes, vv...
+
+CSS là ngôn ngữ tạo phong cách cho trang web - Cascading Style Sheet 
+language. Nó dùng để tạo phong cách và định kiểu cho những yếu tố được
+viết dưới dạng ngôn ngữ đánh dấu, như là HTML.
+
+/*****        Làm quen với Dev tools       *****/
+
+/*****        Cài đặt VS Code, Page Ruler extension       *****/
+1. Visual studio code + Live server extension
+2. Chrome page ruler extension
+
+/*****        Khắc phục lỗi cài đặt Page Ruler Redux       *****/
+
+/*######################################################################################################################*/
+
+/**********         Bài 2 : LÀM QUEN VỚI HTML        **********/
+
+/*****        Cấu trúc của 1 file HTML       *****/
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        Xin chào các bạn!
+    </body>
+</html>
+
+/*****        Comments trong HTML       *****/
+<!DOCTYPE html>
+<html>
+    <!-- Phần đầu -->
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+    </head>
+
+    <!-- Phần thân -->
+    <body>
+        Xin chào các bạn!
+    </body>
+</html>
+
+/*****        Các thẻ HTML thông dụng       *****/
+<!DOCTYPE html>
+<!-- 
+    1. h1 - h6 - heading
+    2. p - paragraph
+    3. img - image
+    4. a - anchor (neo cái liên kết)
+    5. ul, li - unordered list, list item
+    6. table
+    7. input
+    8. button
+    9. div
+ -->
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <div>
+            <h1>Bloomberg: Ông Putin muốn đàm phán chấm dứt xung đột Ukraine</h1>
+
+            <input type="text">
+            <input type="checkbox">
+            <input type="radio">
+
+            <input name="gender" type="radio">
+            <input name="gender" type="radio">
+            <input name="gender" type="radio">
+
+            <button>Đăng ký</button>
+
+            <p>Theo nguồn tin này, "thông qua các kênh gián tiếp, Tổng thống Nga Vladimir Putin đang phát tín hiệu để ngỏ đàm phán về một loạt vấn đề, trong đó có thỏa thuận an ninh tương lai cho Ukraine.</p>
+            <img src="https://cdnphoto.dantri.com.vn/kOmbrSU3HhmTCumI3QO7dhiU33A=/thumb_w/1020/2024/01/17/putinreuters-1705448550320.jpg" alt="Ảnh Putin">
+            <a href="https://fullstack.edu.vn/">Tới trang học lập trình</a>
+
+            <ul>
+                <li>HTML, CSS là gì?</li>
+                <li>Cài đặt môi trường</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Địa chỉ</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Huy Trần</td>
+                        <td>Việt Nam</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Huy Trần2</td>
+                        <td>Việt Nam2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Huy Trần3</td>
+                        <td>Việt Nam3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
+/*****        Attribute trong HTML là gì?       *****/
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h1 title="Đây là tiêu đề">Attribute?</h1>
+    </body>
+</html>
+
+/*######################################################################################################################*/
+
+/**********         Bài 3 : LÀM QUEN VỚI CSS        **********/
+
+/*****        Sử dụng CSS trong HTML       *****/
+Có 3 cách sử dụng CSS trong HTML
+    - Internal: Bên trong
+    - External: Bên ngoài
+    - Inline: Trong dòng
+h1 {
+    color: red;
+    font-size: 20px;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <!-- <link rel="stylesheet" href="main.css"> -->
+        <!-- <style>
+            h1 {
+                color: red;
+                font-size: 20px;
+            }
+        </style> -->
+    </head>
+
+    <body>
+        <div>
+            <h1>CSS in HTML?</h1>
+            <ol>
+                <li>Internal</li>
+                <li>External</li>
+                <li style="color: red;font-size: 16px">Inline</li>
+            </ol>
+        </div>
+    </body>
+</html>
+
+/*****        ID và Class       *****/
+Cả hai khái niệm ID và Class đều thuộc một khái niệm lớn gọi là 
+CSS selectors(cách để gọi tới các element trong html để css)
+#first-heading {
+    color: red;
+    font-size: 20px;
+}
+
+.second-heading {
+    color:green;
+    font-size: 20px;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+        <div>
+            <h1 id="first-heading">CSS selectors</h1>
+            <h1 class="second-heading">CSS selectors</h1>
+            <h1 class="second-heading">CSS selectors</h1>
+            <h2 class="second-heading">ID & Class?</h2>
+        </div>
+    </body>
+</html>
+
+/*****        CSS selectors cơ bản #1       *****/
+* {
+    font-size: 15px;
+}
+
+#first-heading {
+    color: red;
+    font-size: 20px;
+}
+
+.second-heading {
+    color:green;
+    font-size: 20px;
+}
+
+.title {
+    color: red;
+}
+
+.title.heading {
+    color: blueviolet;
+}
+
+.box .title {
+    color: aquamarine;
+}
+
+h2 {
+    font-style: oblique;
+}
+
+h2.title {
+    color:chartreuse;
+}
+
+.title2, .title3 {
+    color: teal;
+}
+
+.box > .title {
+    color: cadetblue;
+}
+
+.title5 + .title5 {
+    color: aqua;
+}
+
+.title6 ~ .title6 {
+    color:blueviolet;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+        <h2 class="title">2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h2>
+        <h2 class="title">2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h2>
+        <h3 class="title">3Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h3>
+        <h4 class="title">4Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h4>
+        <h2 class="title2">2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h2>
+        <h3 class="title3">3Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h3>
+        
+        <h2 class="title heading">2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h2>
+        <h2 class="heading title">2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h2>
+        
+        <div class="box">
+            <h2 class="title">2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h2>
+            <div>
+                <h2 class="title">2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h2>
+            </div>
+        </div>
+        
+        <h5 class="title5">5Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h5>
+        <h6></h6>
+        <h5 class="title5">5Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h5>
+        <h5 class="title5">55Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h5>
+        
+        <h6 class="title6">6Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h6>
+        <h5></h5>
+        <h6 class="title6">6Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h6>
+        <h6 class="title6">6Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit praesentium maxime rerum! Omnis fuga adipisci cum atque iusto optio repellendus deleniti nemo saepe, quibusdam vero quam impedit ullam rem nisi.</h6>
+    </body>
+</html>
+
+/*****        Độ ưu tiên trong CSS       *****/
+Priority?
+1. Internal, External?  ngang nhau
+2. Inline - 1000
+3. #id - 100
+4. .class - 10
+5. tag - 1
+6. Equal specificity?   cùng loại viết sau ưu tiên hơn
+7. Universal selector and inherited? - 0
+!important mạnh nhất
+* {
+    color: black;
+}
+
+html {
+    color: white;
+}
+
+h1 {
+    color: red !important;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <!-- <style>
+            #heading-id.heading-class {
+                color: violet;
+            }
+            
+            #heading-id {
+                color: rgb(114, 0, 152);
+            }
+
+            .heading-class {
+                color: yellow;
+            }
+
+            h1 {
+                color: green;
+            }
+        </style> -->
+
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <h1 style="color: blue;" id="heading-id" class="heading-class">Priority?</h1>
+            <!-- <h1 id="heading-id" class="heading-class">Priority?</h1> -->
+            <ol>
+                <li>Internal, External?</li>
+                <li>Inline - 1000</li>
+                <li>#id - 100</li>
+                <li>.class - 10</li>
+                <li>tag - 1</li>
+                <li>Equal specificity?</li>
+                <li>Universal selector and inherited?</li>
+            </ol>
+        </div>
+    </body>
+</html>
+
+/*****        Sử dụng biến trong CSS       *****/
+:root {
+    --text-color: blue;
+}
+
+h1 {
+    --my-color: green;
+    color: var(--my-color);
+}
+
+h2 {
+    color: var(--text-color);
+}
+
+h3 {
+    color: var(--my-color);
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+        <div>
+            <h1>CSS Variable?</h1>
+            <h2>CSS Variable?</h2>
+            <h3>CSS Variable?</h3>
+        </div>
+    </body>
+</html>
+
+/*****        Các đơn vị trong CSS       *****/
+CSS units? đơn vị trong CSS giúp điều chỉnh kích thước hiển thị 
+trên website
+1. Absolute units?  đơn vị tuyệt đối, kích thước không thay đổi
+khi những yếu tố xung quanh tác động lên
+    px
+    pt
+    cm
+    mm
+    inch
+    pc
+2. Relative units?  đơn vị tương đối, thay đối kích thước khi 
+đối tượng phụ thuộc thay đổi
+    %       phụ thuộc vào thẻ chứa nó       (100% = 16px)
+    rem     phụ thuộc vào thẻ html
+    em      phụ thuộc vào thẻ gần nhất chứa nó
+    viewport: độ rộng của trình duyệt
+    vw      viewport width: chiều ngang của trình duyệt (1vw = 1% chiều ngang trình duyệt)
+    vh      viewport height: chiều dọc của trình duyệt (1vh = 1% chiều dài trình duyệt)
+    vmin
+    vmax
+    ex
+    ch
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html {
+                font-size: 40px;
+            }
+
+            .box {
+                width: 100%;
+                height: 100px;
+                background-color: yellowgreen;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box"></div>
+        <div>
+            <h1>CSS units?</h1>
+        </div>
+    </body>
+</html>
+
+/*****        Một số hàm trong CSS       *****/
+CSS function
+    var()
+    linear-gradient()
+    rgba()
+    rgba()
+    rgb()   chọn màu
+    calc()  tính toán
+    attr()  thuộc tính
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html {
+                font-size: 40px;
+            }
+
+            .box {
+                width: calc(80% + 20px);
+                height: 120px;
+                background: rgb(36, 15, 144);
+            }
+
+            .box::after {
+                content: attr(data-title);
+            }
+
+            a::after {
+                content: " (" attr(href) ")";
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box" data-title="Đây là box"></div>
+
+        <a href="https://fullstack.edu.vn/">Học lập trình</a>
+        
+        <h1>CSS functions</h1>
+        <ul>
+            <li>var()</li>
+            <li>linear-gradiant()</li>
+            <li>rgba()</li>
+            <li>rgb()</li>
+            <li>calc()</li>
+            <li>attr()</li>
+        </ul>
+    </body>
+</html>
+
+/*****        Pseudo classes trong CSS       *****/
+CSS pseudo-classes      lớp giả
+    :root           tham chiếu đến phần tử gốc(thẻ html) file html
+    :hover          kích hoạt khi di chuột lên đối tượng
+    :active         kích hoạt khi bấm hoặc giữ đối tượng
+    :first-child    con đầu tiên
+    :last-child     con cuối cùng
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html {
+                font-size: 20px;
+            }
+
+            .box {
+                width: 100%;
+                height: 120px;
+                background: rgb(36, 15, 144);
+            }
+
+            .box:hover {
+                background-color: #333;
+            }
+
+            h1:hover {
+                color: red;
+            }
+
+            .box:active {
+                background-color: #666;
+            }
+
+            h1:active {
+                color: blue;
+            }
+
+            li:first-child {
+                color: aqua;
+            }
+
+            li:last-child {
+                color: aquamarine;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box" data-title="Đây là box"></div>
+        
+        <h1>CSS pseudo-classes</h1>
+        <ul>
+            <li>:root</li>
+            <li>:hover</li>
+            <li>:active</li>
+            <li>:first-child</li>
+            <li>:last-child</li>
+        </ul>
+    </body>
+</html>
+
+/*****        Pseudo elements trong CSS       *****/
+CSS pseudo-elements     phần tử giả, tạo ra phần tử hiển thị trên website
+                        mà không phải viết mã html, chỉ cần viết js một
+                        element chỉ có một before, after
+    ::before            đầu tiên
+    ::after             cuối cùng
+    ::first-letter      chữ đầu tiên
+    ::first-line        hàng đầu tiên
+    ::selection         sự lựa chọn(tô đen)
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html {
+                font-size: 20px;
+            }
+
+            .box {
+                width: 100%;
+                height: 120px;
+                background: rgb(36, 15, 144);
+            }
+
+            .box::before {
+                content: "";
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-color: #fff;
+            }
+            .box::after {
+                content: "";
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-color: #fff;
+            }
+
+            h1::first-letter {
+                font-size: 50px;
+            }
+
+            h1::first-line {
+                font-style: italic;
+            }
+
+            ::selection {
+                background-color: violet;
+                color: #fff;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box" data-title="Đây là box"></div>
+        
+        <h1>CSS pseudo-elements <br> Dòng thứ 2</h1>
+        <ul>
+            <li>::before</li>
+            <li>::after</li>
+            <li>::first-letter</li>
+            <li>::first-line</li>
+            <li>::selection</li>
+        </ul>
+    </body>
+</html>
+
+/*######################################################################################################################*/
+
+/**********         Bài 4 : ĐỆM, VIỀN VÀ KHOẢNG LỀ        **********/
+
+/*****        Thuộc tính padding (đệm)       *****/
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .box {
+                width: 60px;
+                height: 60px;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .box1 {
+                background: #333;
+            }
+
+            .box2 {
+                background: orange;
+            }
+
+            .box3 {
+                background: firebrick;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                
+                padding: 15px;
+                padding: 15px 14px;
+                padding: 15px 14px 13px;
+                padding: 15px 14px 13px 12px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box box1">Box 1</div>
+        <div class="box box2">Box 2</div>
+        <div class="box box3">Box 3</div>
+    </body>
+</html>
+
+/*****        Thuộc tính border (đường viền)       *****/
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .box {
+                width: 60px;
+                height: 60px;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .box1 {
+                background: #333;
+            }
+
+            .box2 {
+                background: orange;
+            }
+
+            .box3 {
+                background: firebrick;
+                padding: 10px;
+                border-top-width: 10px;
+                border-right-width: 12px;
+                border-bottom-width: 10px;
+                border-left-width: 12px;
+                
+                border-width: 10px;
+                
+                border-style: solid;
+                border-color: #333;
+
+                border: 10px solid #333;
+                border: 10px solid ;
+                border-top: 10px solid #333;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box box1">Box 1</div>
+        <div class="box box2">Box 2</div>
+        <div class="box box3">Box 3</div>
+    </body>
+</html>
+
+/*****        Thuộc tính margin (khoảng cách lề)       *****/
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .box {
+                width: 60px;
+                height: 60px;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                float: left;
+            }
+
+            .box1 {
+                background: #333;
+            }
+
+            .box2 {
+                background: orange;
+                margin-left: 20px;
+            }
+
+            .box3 {
+                background: firebrick;
+                margin: 10px;
+                margin: 10px 20px;
+                margin: 10px 20px 30px;
+                margin: 10px 20px 30px 40px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box box1">Box 1</div>
+        <div class="box box2">Box 2</div>
+        <div class="box box3">Box 3</div>
+    </body>
+</html>
+
+/*****        Thuộc tính box-sizing       *****/
+Khi thêm box-sizing vào thì nó sẽ hiểu chiều ngang của element sẽ bằng
+tổng kích thước của border + padding + content
+
+Khi đó content sẽ tự động tính toán = kích thước khai báo - border - padding
+
+Nếu padding hoặc border quá lớn thì element sẽ không bằng kích thước
+khai báo
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .box {
+                width: 100px;
+                height: 100px;
+                color: #fff;
+                background-color: darkorchid;
+                padding: 16px;
+                border: 2px solid #333;
+                
+                box-sizing: content-box;
+
+                box-sizing: border-box;
+            }
+
+            .box {
+                box-sizing: unset;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box">Đây là nội dung bài viết</div>
+    </body>
+</html>
+
+/*######################################################################################################################*/
+
+/**********         Bài 5 : THUỘC TÍNH TẠO NỀN        **********/
+
+/*****        Thuộc tính background-image       *****/
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html, body {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .header {
+                width: 100%;
+                height: 100vh;
+                background-image: 
+                url(ScreenShot31-removebg-preview.png), 
+                url(download.jpg);
+
+                background-image: linear-gradient(#333, #ccc);
+                background-image: linear-gradient(90deg, rgba(89, 255, 0, 0.1), rgba(0, 0, 255, 0.5)),
+                url(ScreenShot31-removebg-preview.png);
+
+                background-size: auto 100%;          
+                background-repeat: no-repeat;      
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header"></div>
+    </body>
+</html>
+
+/*****        Thuộc tính background-size với cover, contain       *****/
+background-size: contain; // lấy cạnh dài làm chuẩn và tiêu chí là không che khuất ảnh
+background-size: cover; // lấy cạnh dài làm chuẩn và tiêu chí là không để khoảng trống
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html, body {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .header {
+                width: 100%;
+                height: 100vh;
+                background-image: url(download.jpg);
+                background-repeat: no-repeat;
+                background-size: auto 100%;
+                background-size: contain;
+                background-size: cover;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header"></div>
+    </body>
+</html>
+
+/*****        Thuộc tính background-origin       *****/
+// Chỉnh kích thước ảnh theo Box
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html, body {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .header {
+                width: 100%;
+                height: 100vh;
+                background-image: linear-gradient(90deg, rgba(89, 255, 0, 0.1), rgba(0, 0, 255, 0.5)),
+                url(download.jpg);
+                background-repeat: no-repeat;
+                background-size: auto 100%;
+                border: 20px dashed #000;
+                padding: 20px;
+                box-sizing: border-box;
+                background-origin: border-box;
+                background-origin: padding-box;
+                background-origin: content-box;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header"></div>
+    </body>
+</html>
+
+/*****        Thuộc tính background-position       *****/
+// Chỉnh vị trí cho ảnh
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html, body {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .header {
+                width: 100%;
+                height: 100vh;
+                background-image: linear-gradient(90deg, rgba(89, 255, 0, 0.1), rgba(0, 0, 255, 0.5)),
+                url(download.jpg);
+                background-repeat: no-repeat;
+                background-size: 200px;
+                background-position: top center;
+                background-position: top right;
+                background-position: bottom center;
+                background-position: bottom left;
+                background-position: top;
+                background-position: 20%;
+                background-position: top 20% right -20%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header"></div>
+    </body>
+</html>
+
+/*****        Cú pháp "shorthand" cho background       *****/
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html, body {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .header {
+                width: 100%;
+                height: 100vh;
+                background: url(d.jpg) no-repeat center / contain;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header"></div>
+    </body>
+</html>
+
+/*****        Tìm hiểu về các giá trị màu sắc trong CSS       *****/
+body {
+    /* background: rgb(255, 0, 0, 0.5); */
+    background: #ff0000;
+    background: #0000ff;
+    background: #00f;
+    background: #ff0000ff;
+    background: #ff000080;
+}
+
+/*
+    8-bit: 0 - 255
+
+    bit (binary digit) => 1 bit: 0 / 1
+    [][][][][][][][]
+*/
+
+/*######################################################################################################################*/
+
+/**********         Bài 6 : THUỘC TÍNH VỊ TRÍ        **********/
+
+/*****        CSS position relative       *****/
+Position
+    Relative    vị trí tương đối - không bị phụ thuộc vào cái nào khác cả, nó sẽ
+                lấy chính vị trí của nó làm gốc tọa độ luôn
+    Absolute    vị trí tuyệt đối
+    Fixed       vị trí phụ thuộc vào khung trình duyệt
+    Sticky      vị trí bám dính phụ thuộc vào khung trình duyệt
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html, body {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            h1 {
+                position: relative;
+                top: 100px;
+                left: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Position</h1>
+        <ul>
+            <li>Relative</li>
+            <li>Absolute</li>
+            <li>Fixed</li>
+            <li>Sticky</li>
+        </ul>
+    </body>
+</html>
+
+/*****        CSS position absolute       *****/
+Position
+    Relative    vị trí tương đối
+    Absolute    vị trí tuyệt đối - bị phụ thuộc vào thẻ cha gần nhất có thuộc tính
+                position không phân biệt là loại nào, lấy thẻ cha đó làm gốc tọa
+                độ, trong trường hợp này sẽ ưu tiên top hơn bottom, left hơn right
+    Fixed       vị trí phụ thuộc vào khung trình duyệt
+    Sticky      vị trí bám dính phụ thuộc vào khung trình duyệt
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html, body {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            h1 {
+                position: relative;
+                top: 100px;
+                left: 100px;
+            }
+
+            li:nth-of-type(2) {
+                color: aqua;
+            }
+
+            .box {
+                width: 100%;
+                height: 120px;
+                background-color: #333;
+                position: relative;
+            }
+
+            .box-child {
+                /* background-color: rgba(255, 255, 255, 0.5); */
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                background-color: #fff;
+                top: 0;
+                right: 0;
+            }
+
+            .box2 {
+                width: 300px;
+                height: 100px;
+                background-color: aqua;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box">
+            <div>
+                <div class="box2">
+                    <div class="box-child"></div>
+                </div>
+            </div>
+        </div>
+        
+        <h1>Position</h1>
+        <ul>
+            <li>Relative</li>
+            <li>Absolute</li>
+            <li>Fixed</li>
+            <li>Sticky</li>
+        </ul>
+    </body>
+</html>
+
+/*****        CSS position fixed       *****/
+Position
+    Relative    vị trí tương đối
+    Absolute    vị trí tuyệt đối
+    Fixed       vị trí phụ thuộc vào khung trình duyệt
+    Sticky      vị trí bám dính phụ thuộc vào khung trình duyệt
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html, body {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .header {
+                width: 100%;
+                height: 42px;
+                background-color: #333;
+                position: fixed;
+                top: 0;
+            }
+
+            h1 {
+                margin-top: 60px;
+            }
+
+            ul {
+                height: 2000px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+
+        </div>
+        
+        <h1>Position</h1>
+        <ul>
+            <li>Relative</li>
+            <li>Absolute</li>
+            <li>Fixed</li>
+            <li>Sticky</li>
+        </ul>
+    </body>
+</html>
+
+/*****        CSS position sticky       *****/
+Position
+    Relative    vị trí tương đối
+    Absolute    vị trí tuyệt đối
+    Fixed       vị trí phụ thuộc vào khung trình duyệt
+    Sticky      vị trí bám dính phụ thuộc vào khung trình duyệt
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            html, body {
+                font-size: 20px;
+                margin: 0;
+            }
+
+            h1 {
+                margin-top: 40px;
+                padding: 0 16px;
+                color: #fff;
+                background-color: #333;
+                position: sticky;
+                position: -webkit-sticky;
+                top: 0;
+            }
+
+            ul {
+                height: 2000px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Position</h1>
+        <ul>
+            <li>Relative</li>
+            <li>Absolute</li>
+            <li>Fixed</li>
+            <li>Sticky</li>
+        </ul>
+    </body>
+</html>
+
+/*######################################################################################################################*/
+
+/**********         Bài 7 : MỘT SỐ TRICKS VÀ TIPS        **********/
+
+/*****        Các cách căn giữa trong CSS       *****/
+/*body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box {
+    background-color: orange;
+    height: 100px;
+}
+
+h3 {
+    margin: 0;
+    text-align: center;
+    line-height: 100px;
+}*/
+
+/* Cách 2 */
+/*body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box {
+    background-color: orange;
+    height: 100px;
+    display: flex;
+}
+
+h3 {
+    margin: auto;  
+}*/
+
+/* Cách 3 */
+/*body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box {
+    background-color: orange;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+h3 {
+      
+}*/
+
+/* Cách 4 */
+/*body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box {
+    background-color: orange;
+    height: 100px;
+    position: relative;
+}
+
+h3 {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*transform: translateY(-50%) translateX(-50%);*
+    transform: translate(-50%, -50%);
+}*/
+
+/* Trường hợp sử dụng cách 4: thêm dấu gạch vào giữa các tiêu đề */
+body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box {
+    background-color: orange;
+    height: 100px;
+    display: flex;
+}
+
+h3 {
+    margin: auto;
+    position: relative;
+}
+
+h3::after {
+    position: absolute;
+    left: -10px;
+    content: "";
+    border-left: 3px solid #333;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+        <div class="box">
+            <h3>CENTER ME</h3>
+        </div>
+    </body>
+</html>
+
+/*****        Hiển thị ảnh dự phòng khi ảnh chính lỗi       *****/
+onerror chỉ chạy trên thẻ gọi file
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            div {
+                width: 200px;
+                height: 200px;
+                background-image: url(d.jpg), url(200x200.png);
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>
+
+        </div>
+    </body>
+</html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>F8 - Shop</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            img {
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <img onerror="this.src='200x200.png'" src="dd.jpg" alt="">
+    </body>
+</html>
+
+/*****        Tối ưu perfomance hình ảnh với srcset       *****/
+srcset sử dụng trong tình huống trang web sử dụng nhiều hình ảnh để tối ưu
+## Trang web sử dụng ít hình ảnh (Tốc độ tải trang không bị ảnh hưởng nhiều
+bởi hình ảnh)
+    Tối ưu sử dụng hình ảnh trên trang web?
+        1. Sử dụng định dạng ảnh phù hợp?
+            - Hình học, vector, v.v: SVG
+            - Bitmap transparent: PNG, WEBP
+            - Bitmap không transparent: JPEG, WEBP
+        2. Nén hình ảnh (giảm dung lượng)
+            - https://tinypng.com/
+        3. Sử dụng kích thước ảnh phù hợp?
+            - Original: 4000px x 4000px, Figma: 800px x 800px (CSS),
+            Resize: 1600px x 1600px (2x), đáp ứng tốt cho cả màn hình
+            PPI/DPI cao (retina)
+            - PPI (Pixel per inch), DPI (Dots per inch): 100 DPI, 300 DPI
+
+    Loại màn hình:
+        1. Màn hình thường (DPI thấp - 1:1): 800px x 800px ✅,
+        1600px x 1600px ❌
+        2. Màn hình retina (DPI cao - 2:1): 800px x 800px ❌, 
+        1600px x 1600px ✅
+## Trang web sử dụng nhiều hình ảnh
+    Thiết bị:
+        1. Mobile: 1600px x 1600px ❌ => Tốn băng thông, chờ lâu hơn
+        => Giảm trải nghiệm người dùng
+        2. Tablet: 1600px x 1600px ❌
+        3. Desktop: 1600px x 1600px ✅
+## Bài toán 1   (Trình duyệt là người quyết định cuối cùng là dùng ảnh nào)
+    1. Mobile: 50px x 50px
+    2. Tablet: 100px x 100px
+    3. Desktop: 200px x 200px
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image srcset attribute</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+
+        <!-- 
+        
+         -->
+    </head>
+
+    <body>
+        <!-- 1. Resolution switching: Different sizes -->
+        <img
+            srcset="
+                100x100.jpg 100w,
+                200x200.jpg 200w,
+                400x400.jpg 400w
+            "
+            sizes="(max-width: 575px) 100px, (max-width: 991px) 200px, 400px"
+            src="400x400.jpg"
+            alt="Elva dressed as a fairy" 
+        />
+    </body>
+</html>
+
+## Bài toán 2
+    - Desktop: 200px x 200px
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image srcset attribute</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+        <!-- 2. Resolution switching: Same size, different resolution -->
+        <img
+            srcset="200x200.jpg 1x, 400x400.jpg 2x"
+            src="400x400.jpg"
+            alt="" 
+        />
+    </body>
+</html>
+
+## Bài toán 3
+    - Desktop: /img/ảnh-1.jpg
+    - Mobile: /img/ảnh-2.jpg
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image srcset attribute</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            .image {
+                height: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- 3. Art direction -->
+        <picture>
+            <source media="(max-width: 575px)" srcset="./img/channels4_profile(1)(1).jpg"/>
+            <img 
+                class="image"
+                src="./img/channels4_profile(1).jpg" 
+                alt="Large"
+            />
+        </picture>
+    </body>
+</html>

@@ -1,0 +1,3711 @@
+/*######################################################################################################################*/
+
+/**********         Bài 1 : GIỚI THIỆU        **********/
+
+/*****        ReactJS là gì? Tại sao nên học ReactJS?       *****/
+    Tại sao nên học React?
+        . Độ hot
+        . Cộng đồng lớn
+        . Được đánh giá là thân thiện với SEO trong những Lib/FW JS (SEO-Search Engine
+        Optimization)
+        . Khả năng mở rộng tốt, tái sử dụng cao
+        . Hiệu suất cao
+        . Phát triển nhanh chóng
+        . Khả năng tương thích ngược
+        . Tương lai sáng
+
+    1. Giới thiệu
+    - 1. React là gì?
+    - 2. SPA là gì?
+
+    2. Ôn lại ES6 (không bắt buộc)
+    - 3. Arrow function
+    - 4. JS modules
+    - 5. Enhanced object literals
+    - 6. Spread operator
+    - 7. Destructuring
+
+    3. Làm quen với React element
+    - 8. Thêm React vào dự án
+    - 9. Document.createElement
+    - 10. React.createElement
+    - 11. Hiểu về thư viện React-DOM
+    - 12. Render UI với React-DOM
+    - 13. Tóm tắt chương
+
+    4. Tính năng cơ bản & cú pháp
+    - 14. Tạo dự án với create-react-app
+    - 15. Cấu trúc thư mục của create-react-app
+    - 16. JSX là gì?
+    - 17. Function Component
+    - 18. Class Component
+    - 19. Sử dụng lại Component
+    - 20. Khái niệm Props
+    - 21. Children Prop
+    - 22. Pass props
+    - 23. Thư viện "prop-types"
+    - 24. Khái niệm State
+    - 25. Phân biệt Props & State
+    - 26. Xử lý DOM events
+    - 27. Stateless & Stateful Component
+    - 28. Thêm "Two Way Binding"
+    - 29. Viết CSS inline
+    - 30. Viết CSS externals
+    - 31. Sử dụng SCSS
+    - 32. Render nội dung với điều kiện
+
+    5. Styles trong ReactJS
+    - 33. Giới thiệu CSS modules
+    - 34. Sử dụng đồng thời nhiều classes
+    - 35. Sử dụng classNames động (dynamically)
+    - 36. Sử dụng thư viện "classnames"
+    - 37. Sử dụng Styled Components
+
+    6. Thư viện React Router DOM
+    - 38. Điều hướng trang với React Router DOM
+
+    7. Tìm lỗi & sửa lỗi (debug)
+    - 39. Sử dụng React Developer Tools
+    - 40. Khái niệm Sourcemaps
+    - 41. Sử dụng Error Boundaries Component
+
+    8. Xây dựng cấu trúc dự án
+    - 42. Cấu trúc thư mục dự án
+    - 43. Cấu trúc Component
+    - 44. Cấu trúc assets
+    - 45. Cấu trúc util
+    - 46. Thêm file cấu hình
+
+    9. Cấu hình theo môi trường
+    - 47. Enviroment là gì? Tại sao phải sử dụng?
+    - 48. Thêm tệp cấu hình môi trường vào dự án
+
+    10. Hooks
+    - 49. Khái niệm Hooks
+    - 50. Sử dụng useState() hook
+    - 51. Sử dụng useEffect() hook
+    - 52. Sử dụng useCallback() hook
+    - 53. Sử dụng Refs & useRef() hook
+    - 54. Tự tạo hook của bạn (custom hook)
+
+    11. Các kỹ thuật tối ưu
+    - 55. Sử dụng props "key" sao cho đúng
+    - 56. Tối ưu component với React.memo()
+    - 57. Hiểu cách React cập nhật lại DOM
+    - 58. Các kỹ thuật tránh re-render không cần thiết
+    - 59. Kỹ thuật Lazy Load Components
+    - 60. Sử dụng thư viện Loadable
+    - 61. Component bậc cao (HOC)
+
+    12. Context API
+    - 62. Vấn đề khi truyền props nhiều cấp
+    - 63. Sử dụng Context API
+
+    13. Xây dựng dự án Tiktok
+    14. Redux
+    15. Thêm Redux vào dự án
+    16. Publish dự án lên Internet
+    - 64. Lưu ý trước khi deploy dự án
+    - 65. Build dự án cho Production
+
+/*****        SPA/MPA là gì?       *****/
+    # SPA - Single-Page Application
+    - ReactJS là 1 trong những thư viện tạo ra SPA
+    - Các "ông lớn" sử dụng SPA: Google, Facebook, Twitter
+    - Các SPA khác: F8, shoppe, 30shine, chotot, zingmp3
+
+    ## Cách triển khai
+    - SPA - Single-Page Application -> CSR -> Client side rendering
+    - MPA - Multi-Page Application -> SSR -> Server side rendering
+
+    ---
+
+    ## Sự khác biệt
+
+    ### SPA
+    - Được cho là cách tiếp cận hiện tại hơn
+    - Không yêu cầu tải lại trang trong quá trình sử dụng
+
+    ### MPA
+    - Là cách tiếp cận cổ điển hơn
+    - Tải lại trang trong quá trình sử dụng (click vào đường link, chuyển sang, ...)
+
+    ### Demo
+
+    ---
+
+    ## So sánh
+
+    ### Tốc độ
+    - SPA nhanh hơn khi sử dụng
+        - Phần lớn tài nguyên được tải trong lần đầu
+        - Trang chỉ tải thêm dữ liệu mới khi cần
+    - MPA chậm hơn khi sử dụng
+        - Luôn tải lại toàn bộ trang khi truy cập và chuyển hướng
+
+    ### Bóc tách
+    - SPA có phần Front-end riêng biệt
+    - MPA Front-end & Back-end phụ thuộc nhau nhiều hơn, được đặt trong cùng 1 dự án
+
+    ### SEO
+    - SPA không thân thiện với SEO như MPA
+    - Trải nghiệm trên thiết bị di động tốt hơn
+
+    ### UX
+    - SPA cho trải nghiệm tốt hơn, nhất là các thao tác chuyển trang
+    - Trải nghiệm trên thiết bị di động tốt hơn
+
+    ### Quá trình phát triển
+    - SPA dễ dàng tái sử dụng code (component)
+    - SPA bóc tách FE & BE
+        - Chia team phát triển song song
+        - Phát triển thêm mobile app dễ dàng
+
+    ### Phụ thuộc Javascript
+    - SPA phụ thuộc hoàn toàn vào Javascript
+    - MPA có thể không cần Javascript
+
+    ---
+
+    ## Chọn SPA hay MPA?
+    - Không có thứ gì luôn hoàn hảo trong mọi trường hợp
+
+/*######################################################################################################################*/
+
+/**********         Bài 2 : ÔN LẠI ES6+        **********/
+
+/*****        Arrow function       *****/
+
+/*****        Enhanced object literals       *****/
+
+/*****        Destructuring, Rest       *****/
+
+/*****        Spread operator       *****/
+
+/*****        JS modules       *****/
+
+/*######################################################################################################################*/
+
+/**********         Bài 3 : REACT, REACTDOM        **********/
+
+/*****        document.createElement() để làm gì?       *****/
+    <!-- 
+        1. document.createElement()
+        2. document.body.appendChild()
+        3. console.dir()
+        4. innerText, id, className, style
+    -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script>
+            const root = document.getElementById('root')
+            const h1 = document.createElement('h1')
+
+            h1.innerText = 'Hello guys!'
+            h1.id = 'heading'
+            h1.className = 'test class-2'
+            h1.style.color = 'red'
+            h1.style = 'color: green; font-size: 20px'
+            Object.assign(h1.style, {
+                color: 'blue',
+                backgroundColor: '#333'
+            })
+
+            console.log(h1)
+
+            root.appendChild(h1)
+        </script>
+    </body>
+    </html>
+
+/*****        Lưu ý: React đã có phiên bản 18       *****/
+
+/*****        Cách thêm React vào Website       *****/
+    <!-- 
+        1. Github(lưu trữ mã nguồn), NPMJS(lưu trữ sản phẩm được xây dựng ra từ mã 
+        nguồn), UNPKG(lấy được những thư viện được lưu trữ bên NPMJS dưới dạng
+        CDN(content delivery network)(dạng URL Online))
+        2. Add React to website
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        3. Official docs
+     -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+    </head>
+    <body>
+        <h1>Add React to website!</h1>
+
+        <script>
+
+        </script>
+    </body>
+    </html>
+
+/*****        React.createElement() nữa là sao?       *****/
+    <!-- 
+        1. React.createElement() -> React element
+        2. So sánh với document.createElement() -> DOM element
+        3. Thay đổi: id, className, style, ...
+        4. Thêm: text, HTML
+        5. Tạo:
+            <h1 title="Hello" class="heading">Hello guys!</h1>
+            <script>
+                // DOM
+                const h1DOM = document.createElement('h1')
+
+                h1DOM.title = 'Hello'
+                h1DOM.className = 'heading'
+                h1DOM.innerText = 'Hello guys!'
+
+                document.body.appendChild(h1DOM)
+
+                // React
+                // React.createElement(type, props, children, children n)
+                const h1React = React.createElement('h1', {
+                    title: 'Hello',
+                    className: 'heading'
+                }, 'Hello guys!')
+
+                console.log(h1DOM)
+                console.log(h1React)
+            </script>
+        6. Tạo:
+            <ul>
+                <li>Javascript</li>
+                <li>ReactJS</li>
+            </ul>
+            <script>
+                // DOM
+                const ulDOM = document.createElement('ul')
+                ulDOM.id = 'ul-id'
+                ulDOM.style = 'color: red; font-size: 30px'
+
+                const liDOM1 = document.createElement('li')
+                liDOM1.innerText = 'Javascript'
+                liDOM1.id = 'li-1'
+
+                const liDOM2 = document.createElement('li')
+                liDOM2.innerText = 'ReactJS'
+
+                ulDOM.appendChild(liDOM1)
+                ulDOM.appendChild(liDOM2)
+
+                document.body.appendChild(ulDOM)
+                
+                // React
+                const ulReact = React.createElement(
+                    'ul',
+                    {
+                        id: 'ul-id',
+                        style: 'color: red; font-size: 30px'
+                    },
+                    React.createElement('li', { id: 'li-1' }, 'Javascript'),
+                    React.createElement('li', null, 'ReactJS')
+                )
+
+                console.log(ulReact)
+            </script>
+        7. Tạo:
+            <div class="post-item">
+                <h2 title="Học React tại F8">Học ReactJS</h2>
+                <p>Học ReactJS từ cơ bản tới nâng cao</p>
+            </div>
+     -->
+    
+/*****        ReactDOM là gì? Tại sao phải sử dụng?       *****/
+    <!-- 
+        1. Tại sao phải sử dụng React-DOM?
+            Để render react element ra trình duyệt, React-DOM là một thư viện
+            là cầu nối giữa React và DOM, giúp React tạo ra react element, dùng element
+            render vào DOM
+        2. Tại sao lại tách React-DOM ra?
+        3. Render UI
+
+        <div class="post-item">
+            <h2 title="Học React tại F8">Học ReactJS</h2>
+            <p>Học ReactJS từ cơ bản tới nâng cao</p>
+        </div>
+     -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script>
+            // React
+            const postItem = React.createElement(
+                'div',
+                {
+                    className: 'post-item'
+                },
+                React.createElement(
+                    'h2',
+                    {
+                        title: 'Học React tại F8'
+                    },
+                    'Học ReactJS'
+                ),
+                React.createElement('p', {}, 'Học ReactJS từ cơ bản tới nâng cao')
+            )
+
+            // Get root element
+            const root = document.getElementById('root')
+
+            // React-DOM -> render UI
+            ReactDOM.render(postItem, root)
+        </script>
+    </body>
+    </html>
+
+/*****        Sử dụng ReactDOM phiên bản 18       *****/
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script>
+            // React
+            const postItem = React.createElement(
+                'div',
+                {
+                    className: 'post-item'
+                },
+                React.createElement(
+                    'h2',
+                    {
+                        title: 'Học React tại F8'
+                    },
+                    'Học ReactJS'
+                ),
+                React.createElement('p', {}, 'Học ReactJS từ cơ bản tới nâng cao')
+            )
+
+            // Get root element
+            const container = document.getElementById('root')
+
+            // React@17
+            // React-DOM -> render UI
+            ReactDOM.render(postItem, root)
+
+            // React@18
+            // const root = ReactDOM.createRoot(container)
+            // root.render(postItem)
+        </script>
+    </body>
+    </html>
+
+/*######################################################################################################################*/
+
+/**********         Bài 4 : REACT, REACTDOM        **********/
+
+/*****        JSX là gì? Tại sao cần JSX?       *****/
+    <!-- 
+        JSX -> Javascript XML
+
+        1. Luôn dùng React.createElement()? Vấn đề?
+        2. JSX? Live demo: https://bit.ly/2VOIMN7
+        3. JSX không phải là HTML,
+            Cần có Javascript, Babel để dùng JSX
+        4. JSX và React-DOM?
+
+        <ul>
+            <li>Javascript</li>
+            <li>ReactJS</li>
+        </ul>
+     -->
+     <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+            const reactCourse = 'ReactJS F8'
+
+            const ul = <ul>
+                <li>Javascript</li>
+                <li>ReactJS</li>
+            </ul>
+
+            ReactDOM.render(ul, document.getElementById('root'))
+        </script>
+    </body>
+    </html>
+
+/*****        JSX render Arrays | JSX FQA       *****/
+    <!-- 
+        Chữa bài tập: Render list khóa học
+
+        * Câu hỏi thường gặp:
+            - Tại sao khi code thuần dùng map phải join()...
+            - Gặp lỗi khi render từ mảng (prop "key")
+            - Không render được 2 elements cùng lúc
+            const jsx = React.createElement(
+                React.Fragment,
+                null,
+                React.createElement('h1', null, 'Heading 1'),
+                React.createElement('h2', null, 'Heading 2'),
+            )
+            const jsx = (
+                <React.Fragment>
+                    <h1>Heading 1</h1>
+                    <h2>Heading 2</h2>
+                </React.Fragment>
+            )
+     -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+            
+            const courses = [
+                {
+                    name: 'HTML, CSS'
+                },
+                {
+                    name: 'Responsive web design'
+                },
+                {
+                    name: 'ReactJS'
+                }
+            ]
+
+            const jsx = (
+                <ul>
+                    {courses.map((course, index) => <li key={index}>{course.name}</li>)}
+                </ul>
+            )
+
+            ReactDOM.render(jsx, document.getElementById('root'))
+        </script>
+    </body>
+    </html>
+
+/*****        React element types       *****/
+    <!-- 
+        *Hooks
+
+        1. React element types: string, function/class
+            - Wrapper
+                - Header -> Header component
+                - Content -> Content component
+                - Footer -> Footer component
+        2. Biểu diễn đơn giản với JSX
+     -->
+     <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="app"></div>
+        
+        <script type="text/babel">
+
+            function Header() {
+                return <div className="header"> New Header</div>
+            }
+
+            class Content extends React.Component {
+                render() {
+                    return (
+                        <div className="content">New Content</div>
+                    )
+                }
+            }
+            
+            const app = (
+                <div className="wrapper">
+                    <Header />
+                    <Content />
+                    <div className="footer">Footer</div>
+                </div>
+            )
+
+            ReactDOM.render(app, document.getElementById('app'))
+        </script>
+    </body>
+    </html>
+
+/*****        Props là gì? Dùng props khi nào?       *****/
+    <!-- 
+        Props
+
+        - React elements
+            - Sử dụng props giống như với attribute của thẻ HTML
+            - 2 props class, for => className, htmlFor
+            - Phải tuân theo quy ước có sẵn
+        - React components
+            - Sử dụng props giống như đối số cho Component
+            - Tự do đặt tên props
+                - Đặt theo camelCase
+                - *Có thể bao gồm dấu gạch ngang
+        - Chú ý:
+            - Prop "key" là prop đặc biệt - chỉ dùng khi thêm vào mảng
+            - Props cơ bản là đối số của Component
+                => Props có thể là bất cứ kiểu dữ liệu gì
+            - Sử dụng destructuring
+     -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            // PostItem.js
+            function PostItem(props) {
+
+                if (typeof props.callback === 'function')
+                    props.callback(Math.random())
+                    
+                return (
+                    <div className="post-item">
+                        <label htmlFor="email">Email</label>
+                        <input type="text" id="email" />
+                        <h2 className="post-title">{props.title}</h2>
+                        <p className="post-desc">{props.description}</p>
+                        <img 
+                            src={props.image}
+                            alt={props.title}
+                        />
+                        <p className="post-published">{props.publishedAt}</p>
+                    </div>
+                )
+            }
+
+            // App.js
+            function App() {
+                return (
+                    <div id="wrapper">
+                        <PostItem 
+                            title="1 Dev Mode hữu ích khi học kiến thức mới"
+                            image="https://files.fullstack.edu.vn/f8-prod/blog_posts/8333/64f0031f9f336.png"
+                            description="Dev Mode cực kỳ hữu ích khi bạn học các kiến thức mới, nó giúp bạn trải nghiệm thực tế luôn, thay vì chỉ xem video đơn thuần như hầu hết các khóa học khác."
+                            publishedAt="6 tháng trước · 4 phút đọc"
+                            callback={(random) => {
+                                console.log('random: ', random)
+                            }}
+                        />
+                        <PostItem 
+                            title="2 Dev Mode hữu ích khi học kiến thức mới"
+                            image="https://files.fullstack.edu.vn/f8-prod/blog_posts/8333/64f0031f9f336.png"
+                            description="Dev Mode cực kỳ hữu ích khi bạn học các kiến thức mới, nó giúp bạn trải nghiệm thực tế luôn, thay vì chỉ xem video đơn thuần như hầu hết các khóa học khác."
+                            publishedAt="6 tháng trước · 4 phút đọc"
+                        />
+                        <PostItem 
+                            title="3 Dev Mode hữu ích khi học kiến thức mới"
+                            image="https://files.fullstack.edu.vn/f8-prod/blog_posts/8333/64f0031f9f336.png"
+                            description="Dev Mode cực kỳ hữu ích khi bạn học các kiến thức mới, nó giúp bạn trải nghiệm thực tế luôn, thay vì chỉ xem video đơn thuần như hầu hết các khóa học khác."
+                            publishedAt="6 tháng trước · 4 phút đọc"
+                        />
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            const courses = [
+                {
+                "id": 15,
+                "title": "HTML CSS Pro",
+                "slug": "htmlcss",
+                "description": "Từ cơ bản tới chuyên sâu, thực hành 8 dự án, hàng trăm bài tập, trang hỏi đáp riêng, cấp chứng chỉ sau khóa học và mua một lần học mãi mãi.",
+                "image": "courses/15/62f13d2424a47.png",
+                "icon": "courses/15/62385d6c63dfa.png",
+                "video_type": "upload",
+                "video": null,
+                "old_price": 2500000,
+                "price": 1299000,
+                "pre_order_price": 699000,
+                "students_count": 3837,
+                "is_pro": true,
+                "is_coming_soon": false,
+                "is_selling": true,
+                "published_at": "2022-08-18T17:00:00.000000Z",
+                "is_registered": false,
+                "user_progress": 0,
+                "last_completed_at": null,
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/15/62f13d2424a47.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/15/62385d6c63dfa.png",
+                "video_url": "",
+                "landing_page_url": "/landing/htmlcss",
+                "is_pre_order": false,
+                "is_published": true
+                },
+                {
+                "id": 27,
+                "title": "Ngôn ngữ tiền xử lý Sass",
+                "slug": "sass",
+                "description": "Đây là một khóa học nhỏ được tách ra từ 2 chương học trong khóa HTML CSS Pro. Kiến thức về Sass trong khóa này bạn có thể áp dụng ngay vào các dự án của bạn.",
+                "image": "courses/27/64e184ee5d7a2.png",
+                "icon": "courses/27/64e0daf212fad.png",
+                "video_type": "upload",
+                "video": "courses/27/oeT5zTmdk8KlHwU2meMJpnR7uihkX6OvYxnkjiB9.mp4",
+                "old_price": 400000,
+                "price": 299000,
+                "pre_order_price": 0,
+                "students_count": 0,
+                "is_pro": true,
+                "is_coming_soon": false,
+                "is_selling": true,
+                "published_at": "2023-08-19T15:06:00.000000Z",
+                "is_registered": false,
+                "user_progress": 0,
+                "last_completed_at": null,
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/27/64e184ee5d7a2.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/27/64e0daf212fad.png",
+                "video_url": "https://videos.fullstack.edu.vn/f8-prod/courses/27/oeT5zTmdk8KlHwU2meMJpnR7uihkX6OvYxnkjiB9.mp4",
+                "landing_page_url": "/landing/sass",
+                "is_pre_order": false,
+                "is_published": true
+                },
+                {
+                "id": 19,
+                "title": "JavaScript Pro",
+                "slug": "javascript",
+                "description": "Khóa học JavaScript Pro",
+                "image": "courses/19/62f13cb607b4b.png",
+                "icon": "courses/19/62f13cb685c81.png",
+                "video_type": "upload",
+                "video": null,
+                "old_price": 0,
+                "price": 0,
+                "pre_order_price": 0,
+                "students_count": 0,
+                "is_pro": true,
+                "is_coming_soon": true,
+                "is_selling": false,
+                "published_at": "2024-02-29T17:00:00.000000Z",
+                "is_registered": false,
+                "user_progress": 0,
+                "last_completed_at": null,
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb607b4b.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb685c81.png",
+                "video_url": "",
+                "landing_page_url": "/landing/javascript",
+                "is_pre_order": false,
+                "is_published": false
+                },
+                {
+                "id": 20,
+                "title": "NextJS Pro",
+                "slug": "reactjs-pro",
+                "description": "Khóa học NextJS Pro",
+                "image": "courses/20/648020fc16597.png",
+                "icon": "courses/20/648020fcc8000.png",
+                "video_type": "upload",
+                "video": null,
+                "old_price": 0,
+                "price": 0,
+                "pre_order_price": 0,
+                "students_count": 0,
+                "is_pro": true,
+                "is_coming_soon": true,
+                "is_selling": false,
+                "published_at": "2024-05-31T17:00:00.000000Z",
+                "is_registered": false,
+                "user_progress": 0,
+                "last_completed_at": null,
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fc16597.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fcc8000.png",
+                "video_url": "",
+                "landing_page_url": "/landing/reactjs-pro",
+                "is_pre_order": false,
+                "is_published": false
+                }
+            ]
+
+            const CourseItem = ({ data }) => (
+                <div>
+                    <h2>{data.title}</h2>
+                    <img src={data.image_url} />
+                    <p>{data.description}</p>
+                    <p>{data.students_count}</p>
+                </div>
+            )
+
+            // App.js
+            function App() {
+                return (
+                    <div id="wrapper">
+                        {courses.map(course => (
+                            <CourseItem
+                                key={course.id}
+                                data={course}
+                            />
+                        ))}
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+/*****        DOM events?       *****/
+    <!-- 
+        Làm việc với JSX
+
+        // Phần I.
+        - Xử lý DOM events
+        - Component do chúng ta định nghĩa phải viết in hoa ký tự đầu
+            - Chọn component trong 1 object
+        - Booleans, Null & Undefined không được render
+        - Kết hợp toán tử logic để render theo điều kiện
+
+        // Phần II.
+        - Props trong JSX
+            - <YourComponent
+                propName1="String literals"
+                propName2={expression}
+            />
+            - Props default to "true"
+            - Spread/Rest props
+            - Children prop
+                - <YourComponent>String literals</YourComponent>
+                - <YourComponent>{expression}</YourComponent>
+            - Render props
+     -->
+     <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            // App.js
+            function App() {
+                return (
+                    <div id="wrapper">
+                        <button 
+                            onClick={() => console.log(Math.random())}
+                        >
+                            Click me!
+                        </button>
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+/*****        Quy ước đặt tên components?       *****/
+    <!-- 
+        Làm việc với JSX
+
+        // Phần I.
+        - Xử lý DOM events
+        - Component do chúng ta định nghĩa phải viết in hoa ký tự đầu
+            - Chọn component trong 1 object
+        - Booleans, Null & Undefined không được render
+        - Kết hợp toán tử logic để render theo điều kiện
+
+        // Phần II.
+        - Props trong JSX
+            - <YourComponent
+                propName1="String literals"
+                propName2={expression}
+            />
+            - Props default to "true"
+            - Spread/Rest props
+            - Children prop
+                - <YourComponent>String literals</YourComponent>
+                - <YourComponent>{expression}</YourComponent>
+            - Render props
+     -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            const courses = [
+                {
+                "id": 15,
+                "title": "HTML CSS Pro",
+                "slug": "htmlcss",
+                "description": "Từ cơ bản tới chuyên sâu, thực hành 8 dự án, hàng trăm bài tập, trang hỏi đáp riêng, cấp chứng chỉ sau khóa học và mua một lần học mãi mãi.",
+                "image": "courses/15/62f13d2424a47.png",
+                "icon": "courses/15/62385d6c63dfa.png",
+                "video_type": "upload",
+                "video": null,
+                "old_price": 2500000,
+                "price": 1299000,
+                "pre_order_price": 699000,
+                "students_count": 3837,
+                "is_pro": true,
+                "is_coming_soon": false,
+                "is_selling": true,
+                "published_at": "2022-08-18T17:00:00.000000Z",
+                "is_registered": false,
+                "user_progress": 0,
+                "last_completed_at": null,
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/15/62f13d2424a47.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/15/62385d6c63dfa.png",
+                "video_url": "",
+                "landing_page_url": "/landing/htmlcss",
+                "is_pre_order": false,
+                "is_published": true
+                },
+                {
+                "id": 27,
+                "title": "Ngôn ngữ tiền xử lý Sass",
+                "slug": "sass",
+                "description": "Đây là một khóa học nhỏ được tách ra từ 2 chương học trong khóa HTML CSS Pro. Kiến thức về Sass trong khóa này bạn có thể áp dụng ngay vào các dự án của bạn.",
+                "image": "courses/27/64e184ee5d7a2.png",
+                "icon": "courses/27/64e0daf212fad.png",
+                "video_type": "upload",
+                "video": "courses/27/oeT5zTmdk8KlHwU2meMJpnR7uihkX6OvYxnkjiB9.mp4",
+                "old_price": 400000,
+                "price": 299000,
+                "pre_order_price": 0,
+                "students_count": 0,
+                "is_pro": true,
+                "is_coming_soon": false,
+                "is_selling": true,
+                "published_at": "2023-08-19T15:06:00.000000Z",
+                "is_registered": false,
+                "user_progress": 0,
+                "last_completed_at": null,
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/27/64e184ee5d7a2.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/27/64e0daf212fad.png",
+                "video_url": "https://videos.fullstack.edu.vn/f8-prod/courses/27/oeT5zTmdk8KlHwU2meMJpnR7uihkX6OvYxnkjiB9.mp4",
+                "landing_page_url": "/landing/sass",
+                "is_pre_order": false,
+                "is_published": true
+                },
+                {
+                "id": 19,
+                "title": "JavaScript Pro",
+                "slug": "javascript",
+                "description": "Khóa học JavaScript Pro",
+                "image": "courses/19/62f13cb607b4b.png",
+                "icon": "courses/19/62f13cb685c81.png",
+                "video_type": "upload",
+                "video": null,
+                "old_price": 0,
+                "price": 0,
+                "pre_order_price": 0,
+                "students_count": 0,
+                "is_pro": true,
+                "is_coming_soon": true,
+                "is_selling": false,
+                "published_at": "2024-02-29T17:00:00.000000Z",
+                "is_registered": false,
+                "user_progress": 0,
+                "last_completed_at": null,
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb607b4b.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb685c81.png",
+                "video_url": "",
+                "landing_page_url": "/landing/javascript",
+                "is_pre_order": false,
+                "is_published": false
+                },
+                {
+                "id": 20,
+                "title": "NextJS Pro",
+                "slug": "reactjs-pro",
+                "description": "Khóa học NextJS Pro",
+                "image": "courses/20/648020fc16597.png",
+                "icon": "courses/20/648020fcc8000.png",
+                "video_type": "upload",
+                "video": null,
+                "old_price": 0,
+                "price": 0,
+                "pre_order_price": 0,
+                "students_count": 0,
+                "is_pro": true,
+                "is_coming_soon": true,
+                "is_selling": false,
+                "published_at": "2024-05-31T17:00:00.000000Z",
+                "is_registered": false,
+                "user_progress": 0,
+                "last_completed_at": null,
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fc16597.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fcc8000.png",
+                "video_url": "",
+                "landing_page_url": "/landing/reactjs-pro",
+                "is_pre_order": false,
+                "is_published": false
+                }
+            ]
+
+            // UI component
+            const CourseItem = ({ data, onClick }) => (
+                <div>
+                    <h2 onClick={() => onClick(data)}>{data.title}</h2>
+                    <img src={data.image_url} />
+                    <p>{data.description}</p>
+                    <p>{data.students_count}</p>
+                </div>
+            )
+
+            // Container
+            function App() {
+
+                const handleClick = (data) => {
+                    console.log(data.title)
+                }
+
+                return (
+                    <div id="wrapper">
+                        {courses.map(course => (
+                            <CourseItem
+                                key={course.id}
+                                data={course}
+                                onClick={handleClick}
+                            />
+                        ))}
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            const Form = {
+                Input() {
+                    return <input />
+                },
+                Checkbox() {
+                    return <input type="checkbox" />
+                }
+            }
+            
+            function App() {
+
+                const type = 'Checkbox'
+
+                const Component = Form[type]
+
+                return (
+                    <div id="wrapper">
+                        <Component />
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            function Button({ title, href, onClick }) {
+                let Component = 'button'
+                const props = {}
+
+                if (href) {
+                    Component = 'a'
+                    props.href = href
+                }
+
+                if (onClick) {
+                    props.onClick = onClick
+                }
+
+                return (
+                    <Component {...props}>{title}</Component>
+                )
+            }
+            
+            function App() {
+                return (
+                    <div id="wrapper">
+                        <Button 
+                            title="Click me!"
+                            href="https://fullstack.edu.vn/learning/reactjs?id=f106ce66-7cfa-4963-94ad-81e96945a576"
+                            onClick={() => console.log(Math.random())}
+                        />
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+            
+            function App() {
+
+                let firstAccess = true
+
+                return (
+                    <div id="wrapper">
+                        {firstAccess && <h1>Welcom to F8</h1>}
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+            
+            function App({ title, content }) {
+
+                let firstAccess = true
+
+                return (
+                    <div id="wrapper">
+                        <h1>{title || content}</h1>
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App content="Content"/>, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+/*****        Children props? Render props?       *****/
+    <!-- 
+        Làm việc với JSX
+
+        // Phần I.
+        - Xử lý DOM events
+        - Component do chúng ta định nghĩa phải viết in hoa ký tự đầu
+            - Chọn component trong 1 object
+        - Booleans, Null & Undefined không được render
+        - Kết hợp toán tử logic để render theo điều kiện
+
+        // Phần II.
+        - Props trong JSX
+            - <YourComponent
+                propName1="String literals"
+                propName2={expression}
+            />
+            - Props default to "true"
+            - Spread/Rest props
+            - Children prop
+                - <YourComponent>String literals</YourComponent>
+                - <YourComponent>{expression}</YourComponent>
+            - Render props
+     -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            function Button({ title }) {
+                return <button>{title}</button>
+            }
+            
+            function App() {
+                const title = "Click me!"
+                return (
+                    <div id="wrapper">
+                        <Button title={title} />
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            function Button({ title, primary }) {
+                console.log(primary)
+
+                // Logic...
+
+                return <button>{title}</button>
+            }
+            
+            function App() {
+                const title = "Click me!"
+                return (
+                    <div id="wrapper">
+                        <Button primary title={title} />
+                        <Button primary={false} title={title} />
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            function Input({ label, ...inputProps }) {
+                return (
+                    <div>
+                        <label>{label}</label>
+                        <input {...inputProps} />
+                    </div>
+                )
+            }
+            
+            function App() {
+                return (
+                    <div id="wrapper">
+                        <Input
+                            label = "Full name"
+                            type = "text"
+                            placeholder = "Enter name..."
+                            title = "Day la input"
+                            onFocus={() => {
+                                console.log(Math.random())
+                            }}
+                        />
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            function Button({ children }) {
+                return <button>{children}</button>
+            }
+            
+            function App() {
+                const title = "Click me!"
+                return (
+                    <div id="wrapper">
+                        <Button>Click me!</Button>
+                        <Button>{title}</Button>
+                        <Button>{true && 'Click meeeee!'}</Button>
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactJS</title>
+        <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+            function List({ data, children }) {
+                return (
+                    <ul>
+                        {data.map((...props) => children(...props))}
+                        <br/>
+                        {data.map(children)}
+                    </ul>
+                )
+            }
+            
+            function App() {
+                const cars = ['BMW', 'Honda', 'Mazda']
+
+                return (
+                    <div id="wrapper">
+                        <List data={cars}>
+                            {(item, index) => <li key={index}>{item}</li>}    
+                        </List>
+                    </div>
+                )
+            }
+
+            // index.js
+            ReactDOM.render(<App />, document.getElementById('root'))
+
+        </script>
+    </body>
+    </html>
+
+/*######################################################################################################################*/
+
+/**********         Bài 5 : CREATE REACT APP        **********/
+
+/*****        NodeJS là gì? Tại sao phải sử dụng NodeJS?       *****/
+
+/*****        Lưu ý: Sử dụng React & React-DOM 17 ở bài sau       *****/
+
+/*****        Tạo dự án với React + Webpack       *****/
+    https://webpack.js.org/
+    https://fullstack.edu.vn/blog/phan-1-tao-du-an-reactjs-voi-webpack-va-babel.html
+    ./react-webpack
+
+/*****        Nâng cấp React & ReactDOM lên 18       *****/
+    import React from 'react' // nạp thư viện react
+    // import ReactDOM from 'react-dom' // nạp thư viện react-dom // @React17
+    import ReactDOM from 'react-dom/client' // nạp thư viện react-dom // @React18
+
+    // Tạo component App
+    function App() {
+        return (
+            <div>
+                <h1>Xin chào anh em F8!</h1>
+                <h2>Yêu anh em nhiều :*</h2>
+                <h3>Anh em có yêu lại không?</h3>
+            </div>
+        )
+    }
+
+    // Render component App vào #root element
+    // React@17
+    // ReactDOM.render(<App />, document.getElementById('root'))
+
+    // React@18
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<App />)
+
+/*****        Tạo dự án với create-react-app       *****/
+    npx create-react-app my-app
+
+/*****        NPM, NPX và YARN là gì?       *****/
+    - NPM
+        - Project scope
+            - npm install react react-dom => dependencies
+            - npm i react react-dom => dependencies
+
+            - npm install --save-dev react react-dom => devDependencies
+            - npm i -D react react-dom => devDependencies
+
+            -npm uninstall react react-dom
+
+        - Global scope
+            - npm i --global create-react-app
+            - npm i -g create-react-app
+
+            -npm uninstall -g create-react-app
+    - NPX: Node => NPM, NPX
+        - Tại sao dùng NPX?
+            Luôn kéo bản mới nhất về, không cần cài thư viện
+        - Gặp lỗi khi: npx create-react-app tiktok
+    - YARN & NPM
+        - Yarn có yarn.lock dùng để quản lý các package, Yarn cài package song song,
+        Yarn cài lại node_modules nhanh hơn do nó dành ra một không gian lưu trữ tạm 
+        nên nó cũng tốn dung lượng nhiều hơn
+        - NPM có package-lock.json dùng để quản lý các package, NPM cài package tuần
+        tự
+    - YARN install
+        - npm i -g yarn
+    - Lưu ý:
+        - Luôn bật development server (npm start || yarn start)
+
+/*****        CRA Folder Structure       *****/
+    - node-modules: chứa tất cả thư viện được cài đặt trong dự án
+    - public: chứa nội dung công khai, có thể truy cập qua địa chỉ web trên trình duyệt
+    , mặc định luôn mở index.html
+        - favicon.ico: icon trên thẻ tiêu đề
+        - manifest.json: khai báo thông tin về web
+        - robots.txt: hướng dẫn công cụ tìm kiếm nên tìm vào những địa chỉ web nào hay
+        có những địa chỉ nào không nên tìm
+    - src: chứa source code
+        - index.js: nơi webpack trỏ vào, nó chỉ thực hiện render ra một component duy
+        nhất tên là App
+        - App.js: nơi code toàn bộ website
+        - reportWebVitals.js: là file để thống kê báo cáo, giúp cung cấp cho công cụ tìm
+        kiếm trong tương lai hiểu được web có hiệu năng như thế nào mục đích là tối ưu
+        trải nghiệm người dùng, có thể gửi lên Google analytics để kiểm tra hiệu năng
+        - setupTests.js: giúp viết test lại xem component có chạy đúng mong muốn không
+    - .gitignore: khai báo những thư mục hoặc file cụ thể nào đó được phần mềm git bỏ
+    qua khi commit lên git server(/node_modules)
+
+/*######################################################################################################################*/
+
+/**********         Bài 6 : HOOKS        **********/
+
+/*****        Hooks là gì?       *****/
+    1. Chỉ dùng cho function component
+    2. Component đơn giản và trở nên dễ hiểu
+        . Không bị chia logic ra như methods trong lifecycle của Class Component
+        . Không cần sử dụng "this"
+    3. Sử dụng Hooks khi nào?
+        . Dự án mới => Hooks
+        . Dự án cũ
+            . Component mới => Function component + Hooks
+            . Component cũ => Giữ nguyên, có thời gian tối ưu sau
+        . Logic nghiệp vụ cần sử dụng các tính chất của OOP => Class component
+    4. Người mới nên bắt đầu với Function hay Class component?
+    5. Có nên kết hợp sử dụng Function component & Class component được không?
+        . Được
+        // Function component
+        function Item({ children }) {
+            return <li>{children}</li>
+        }
+
+        // Class component
+        class List extends React.Component {
+            render() {
+                return {
+                    <ul>
+                        <Item>HTML, CSS</Item>
+                        <Item>Javascript</Item>
+                        <Item>ReactJS</Item>
+                    </ul>
+                }
+            }
+        }
+
+    import {
+        useState,
+        useEffect,
+        useLayoutEffect,
+        useRef,
+        useCallback,
+        useMemo,
+        useReducer,
+        useContext,
+        useImperativeHandle,
+        useDebugValue,
+    } from 'react'
+
+    // Chưa dùng Hooks, chỉ là UI component
+    function ComponentA() {
+        return <h1>Haven't used hooks yet</h1>
+    }
+
+    // Sử dụng Hooks, hỗ trợ thêm nhiều tính năng
+    function ComponentB() {
+        // useState
+        const [state, setState] = useState(initState)
+
+        // useEffect
+        useEffect(() => {
+
+        }, [deps])
+
+        // useLayoutEffect
+        useLayoutEffect(() => {
+
+        }, [deps])
+
+        // useRef
+        const ref = useRef()
+
+        // useCallback
+        const fn = useCallback(() => {
+
+        }, [deps])
+
+        //useMemo
+        const result = useMemo(() => {
+            // return result for memo
+        }, [deps])
+
+        // useReducer
+        const [state, dispatch] = useReducer(reducer, initialArg, init)
+
+        // useContext
+        const value = useContext(MyContext)
+
+        // useImperativeHandle
+        useImperativeHandle(ref, createHandle, [deps])
+
+        // useDebugValue
+        useDebugValue(isOnline ? 'Online' : 'Offline')
+
+        return <h1>Hooks</h1>
+    }
+
+/*****        useState hook       *****/
+    # useState hook
+
+    ### Dùng khi nào?
+    Khi muốn dữ liệu thay đổi thì giao diện tự động được cập nhật (render lại theo dữ liệu).
+
+    ### Cách dùng
+
+    ```jsx
+    import { useState } from 'react'
+
+    function Component() {
+        const [state, setState] = useState(initState)
+
+        ...
+    }
+    ```
+
+    ### Lưu ý
+    - Component được re-render sau khi `setState`
+    - Initial state chỉ dùng cho lần đầu
+    - Set state với callback?
+    - Initial state với callback?
+    - Set state là thay thế state bằng giá trị mới
+
+    import { useState } from 'react'
+
+    const orders = [100, 200, 300]
+
+    function App() {
+    const [counter, setCounter] = useState(() => {
+        const total = orders.reduce((total, cur) => total + cur)
+        return total
+    })
+
+    const handleIncrease = () => {
+        setCounter(counter + 1)
+        setCounter(counter + 1)
+        setCounter(prevState => prevState + 1)
+        setCounter(prevState => prevState + 1)
+        setCounter(prevState => prevState + 1)
+    }
+
+    return (
+        <div className="App" style={{padding: 20}}>
+        <h1>{counter}</h1>
+        <button onClick={handleIncrease}>Increase</button>   
+        </div>
+    );
+    }
+
+    export default App;
+
+        import { useState } from 'react'
+
+        function App() {
+        const [info, setInfo] = useState({
+            name: 'Nguyen Van A',
+            age: 18,
+            address: 'Ha Noi, VN'
+        })
+
+        const handleUpdate = () => {
+
+            setInfo({
+            ...info,
+            bio: 'Yêu màu hồng ^^'
+            })
+
+            // setInfo(prev => {
+
+            //   // logic...
+
+            //   return {
+            //     ...prev,
+            //     bio: 'Yêu màu hồng ^^'
+            //   }
+            // })
+        }
+
+        return (
+            <div className="App" style={{padding: 20}}>
+            <h1>{JSON.stringify(info)}</h1>
+            <button onClick={handleUpdate}>Update</button>   
+            </div>
+        );
+        }
+
+        export default App;
+
+/*****        Two-way binding trong React?       *****/
+    LƯU Ý
+    1. Array
+    2. Reference types
+
+    Ví dụ
+    1. Random gift
+        import { useState } from 'react'
+
+        const gifts = [
+        'CPU i9',
+        'RAM 32GB RBG',
+        'RBG Keyboard',
+        ]
+
+        function App() {
+        const [gift, setGift] = useState()
+
+        const randomGift = () => {
+            const index = Math.floor(Math.random() * gifts.length)
+
+            setGift(gifts[index])
+        }
+
+        return (
+            <div className="App" style={{padding: 32}}>
+            <h1>{gift || 'Chưa có phần thưởng'}</h1>
+            <button onClick={randomGift}>Lấy thưởng</button>   
+            </div>
+        );
+        }
+
+        export default App;
+        
+    2. Two-way Binding ( Ràng buộc 2 chiều )
+    ////////// Text
+        import { useState } from 'react'
+
+        function App() {
+        const [name, setName] = useState('')
+        const [email, setEmail] = useState('')
+
+        const handleSubmit = () => {
+            // CALL API
+            console.log({
+            name,
+            email,
+            })
+        }
+
+        return (
+            <div className="App" style={{padding: 32}}>
+            <input 
+                value={name}
+                onChange={e => setName(e.target.value)}
+            />
+            <input 
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+            />
+            <button onClick={handleSubmit}>Register</button>
+            </div>
+        );
+        }
+
+        export default App;
+
+    //////////  Radio
+        import { useState } from 'react'
+
+        // Response from API
+        const courses = [
+        {
+            id: 1,
+            name: 'HTML, CSS'
+        },
+        {
+            id: 2,
+            name: 'Javascript'
+        },
+        {
+            id: 3,
+            name: 'ReactJS'
+        }
+        ]
+
+        function App() {
+        const [checked, setChecked] = useState()
+
+        const handleSubmit = () => {
+            // Call API
+            console.log({ id: checked })
+        }
+
+        return (
+            <div className="App" style={{padding: 32}}>
+            {courses.map(course => (
+                <div key={course.id}>
+                <input 
+                    type="radio"
+                    checked={checked === course.id}
+                    onChange={() => setChecked(course.id)}
+                />
+                {course.name}
+                </div>
+            ))}
+
+            <button onClick={handleSubmit}>Register</button>
+            </div>
+        );
+        }
+
+        export default App;
+
+    ////////// Checkbox
+        import { useState } from 'react'
+
+        // Response from API
+        const courses = [
+        {
+            id: 1,
+            name: 'HTML, CSS'
+        },
+        {
+            id: 2,
+            name: 'Javascript'
+        },
+        {
+            id: 3,
+            name: 'ReactJS'
+        }
+        ]
+
+        function App() {
+        const [checked, setChecked] = useState([])
+
+        const handleCheck = (id) => {
+            setChecked(prev => {
+            const isChecked = checked.includes(id)
+            if (isChecked) {
+                return checked.filter(item => item !== id)
+            } else {
+                return [...prev, id]
+            }
+            })
+        }
+
+        const handleSubmit = () => {
+            // Call API
+            console.log({ ids: checked })
+        }
+
+        return (
+            <div className="App" style={{padding: 32}}>
+            {courses.map(course => (
+                <div key={course.id}>
+                <input 
+                    type="checkbox"
+                    checked={checked.includes(course.id)}
+                    onChange={() => handleCheck(course.id)}
+                />
+                {course.name}
+                </div>
+            ))}
+
+            <button onClick={handleSubmit}>Register</button>
+            </div>
+        );
+        }
+
+        export default App;
+
+    3. Todolist
+
+/*****        Todolist with useState       *****/
+    3. Todolist
+        import { useState } from 'react'
+
+        function App() {
+        // Get from local storage
+        // const storageJobs = JSON.parse(localStorage.getItem('jobs'))
+
+        const [job, setJob] = useState('')
+        // const [jobs, setJobs] = useState(JSON.parse(localStorage.getItem('jobs')) ?? [])
+        const [jobs, setJobs] = useState(() => {
+            const storageJobs = JSON.parse(localStorage.getItem('jobs'))
+            return storageJobs ?? []
+        })
+
+        const handleSubmit = () => {
+            setJobs(prev => {
+            const newJobs = [...prev, job]
+
+            // Save to local storage
+            const jsonJobs = JSON.stringify(newJobs)
+            localStorage.setItem('jobs', jsonJobs)
+
+            return newJobs
+            })
+            setJob('')
+        }
+
+        return (
+            <div className="App" style={{padding: 32}}>
+            <input
+                value={job}
+                onChange={e => setJob(e.target.value)}
+            />
+            <button onClick={handleSubmit}>Add</button>
+
+            <ul>
+                {jobs.map((job, index) => (
+                <li key={index}>{job}</li>
+                ))}
+            </ul>
+            </div>
+        );
+        }
+
+        export default App;
+
+/*****        Mounted & Unmounted?       *****/
+    Mounted: Lắp vào / Gắn vào
+    Unmounted: Tháo ra / Gỡ ra
+    Content.js
+        function Content() {
+            return (
+                <h1>Hi anh em F8</h1>
+            )
+        }
+
+        export default Content
+    App.js
+        import { useState } from 'react'
+        import Content from "./Content";
+
+        function App() {
+        const [show, setShow] = useState(false)
+
+        return (
+            <div className="App" style={{padding: 32}}>
+            <button 
+                onClick={() => setShow(!show)}
+            >
+                Toggle
+            </button>
+            {show && <Content />}
+            </div>
+        );
+        }
+
+        export default App;
+
+/*****        useEffect hook       *****/
+    // useEffect
+    // 1. Cập nhật lại state
+    // 2. Cập nhật DOM (mutated)
+    // 3. Render lại UI
+    // 4. Gọi cleanup nếu deps thay đổi
+    // 5. Render lại UI
+
+    Events: Add / remove event listener
+    Observer pattern: Subscribe / unsubscribe
+    Closure
+    Timers: setInterval, setTimeout, clearInterval, clearTimeout
+    useState
+    Mounted / unmounted
+    ===
+    Call API
+
+    /**
+    1. Update DOM
+        - F8 blog title
+        // Content.js
+            import { useEffect, useState } from "react"
+
+            function Content() {
+                const [title, setTitle] = useState('')
+
+                useEffect(() => {
+                    console.log('Mounted')
+                    document.title = title
+                })
+
+                return (
+                    <div>
+                        <input 
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                        />
+                        {console.log('Render')}
+                    </div>
+                )
+            }
+
+            export default Content
+        
+    2. Call API
+        // Content.js
+            import { useEffect, useState } from "react"
+
+            function Content() {
+                const [title, setTitle] = useState('')
+                const [posts, setPosts] = useState([])
+
+                useEffect(() => {
+                    fetch('https://jsonplaceholder.typicode.com/posts')
+                        .then(res => res.json())
+                        .then(posts => {
+                            setPosts(posts)
+                        })
+                }, [])
+
+                return (
+                    <div>
+                        <input 
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                        />
+                        <ul>
+                            {posts.map(post => (
+                                <li key={post.id}>{post.title}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )
+            }
+
+            export default Content
+
+    3. Listen DOM events
+        - Scroll
+        - Resize
+    4. Cleanup
+        - Remove listener / Unsubscribe
+        - Clear timer
+    */
+
+    - Dùng useEffect khi muốn thực hiện Side effects(thuật ngữ chung trong lĩnh vực
+    lập trình phần mềm, nó nói tới một chương trình phần mềm khi có tác động xảy ra
+    nó dẫn tới việc dữ liệu của chương trình bị thay đổi)
+        // 1. useEffect(callback)
+        // - Gọi callback mỗi khi component re-render
+        // - Gọi callback sau khi component thêm element vào DOM
+        // 2. useEffect(callback, [])
+        // - Chỉ gọi callback 1 lần sau khi component mounted
+        // 3. useEffect(callback, [deps])
+
+        // ---------------------------------------
+        // 1. Callback luôn được gọi sau khi component mounted
+
+/*****        useEffect with dependencies       *****/
+    Events: Add / remove event listener
+    Observer pattern: Subscribe / unsubscribe
+    Closure
+    Timers: setInterval, setTimeout, clearInterval, clearTimeout
+    useState
+    Mounted / unmounted
+    ===
+    Call API
+
+    /**
+    1. Update DOM
+    2. Call API
+        import { useEffect, useState } from "react"
+
+        const tabs = ['posts', 'comments', 'albums']
+
+        function Content() {
+            const [title, setTitle] = useState('')
+            const [posts, setPosts] = useState([])
+            const [type, setType] = useState('posts')
+
+            useEffect(() => {
+                fetch(`https://jsonplaceholder.typicode.com/${type}`)
+                    .then(res => res.json())
+                    .then(posts => {
+                        setPosts(posts)
+                    })
+            }, [type])
+
+            return (
+                <div>
+                    {tabs.map(tab => (
+                        <button
+                            key={tab}
+                            style={type === tab ? {
+                                color: '#fff',
+                                backgroundColor: '#333',
+                            } : {}}
+                            onClick={() => setType(tab)}
+                        >
+                            {tab}
+                        </button>
+                    ))}
+
+                    <input 
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}
+                    />
+                    <ul>
+                        {posts.map(post => (
+                            <li key={post.id}>{post.title || post.name}</li>
+                        ))}
+                    </ul>
+                </div>
+            )
+        }
+
+        export default Content
+
+    3. Listen DOM events
+        - Scroll
+        - Resize
+    4. Cleanup
+        - Remove listener / Unsubscribe
+        - Clear timer
+    */
+
+    - Dùng useEffect khi muốn thực hiện Side effects(thuật ngữ chung trong lĩnh vực
+    lập trình phần mềm, nó nói tới một chương trình phần mềm khi có tác động xảy ra
+    nó dẫn tới việc dữ liệu của chương trình bị thay đổi)
+        // 1. useEffect(callback)
+        // - Gọi callback mỗi khi component re-render
+        // - Gọi callback sau khi component thêm element vào DOM
+        // 2. useEffect(callback, [])
+        // - Chỉ gọi callback 1 lần sau khi component mounted
+        // 3. useEffect(callback, [deps])
+        // - Callback sẽ được gọi lại mỗi khi deps thay đổi
+
+        // ---------------------------------------
+        // 1. Callback luôn được gọi sau khi component mounted
+
+/*****        useEffect with DOM events       *****/
+    Events: Add / remove event listener
+    Observer pattern: Subscribe / unsubscribe
+    Closure
+    Timers: setInterval, setTimeout, clearInterval, clearTimeout
+    useState
+    Mounted / unmounted
+    ===
+    Call API
+
+    /**
+    1. Update DOM
+    2. Call API
+    3. Listen DOM events
+        - Scroll
+            import { useEffect, useState } from "react"
+
+            const tabs = ['posts', 'comments', 'albums']
+
+            function Content() {
+                const [type, setType] = useState('posts')
+                const [posts, setPosts] = useState([])
+                const [showGoToTop, setShowGoToTop] = useState(false)
+
+                useEffect(() => {
+                    fetch(`https://jsonplaceholder.typicode.com/${type}`)
+                        .then(res => res.json())
+                        .then(posts => {
+                            setPosts(posts)
+                        })
+                }, [type])
+
+                useEffect(() => {
+                    const handleScroll = () => {
+                        // if (window.scrollY >= 200) {
+                        //     setShowGoToTop(true)
+                        // } else {
+                        //     setShowGoToTop(false)
+                        // }
+
+                        setShowGoToTop(window.scrollY >= 200)
+                    }
+
+                    window.addEventListener('scroll', handleScroll)
+
+                    // Cleanup function: chống rò rỉ bộ nhớ
+                    return () => {
+                        window.removeEventListener('scroll', handleScroll)
+                    }
+                }, [])
+
+                return (
+                    <div>
+                        {tabs.map(tab => (
+                            <button
+                                key={tab}
+                                style={type === tab ? {
+                                    color: '#fff',
+                                    backgroundColor: '#333',
+                                } : {}}
+                                onClick={() => setType(tab)}
+                            >
+                                {tab}
+                            </button>
+                        ))}
+
+                        {posts.map(post => (
+                            <li key={post.id}>{post.title || post.name}</li>
+                        ))}
+
+                        {showGoToTop && (
+                            <button
+                                style={{
+                                    position: 'fixed',
+                                    right: 20,
+                                    bottom: 20,
+                                }}
+                            >
+                                Go to top
+                            </button>
+                        )}
+                    </div>
+                )
+            }
+
+            export default Content
+
+        - Resize
+            import { useEffect, useState } from "react"
+
+            function Content() {
+                const [width, setWidth] = useState(window.innerWidth)
+
+                useEffect(() => {
+                    const handleResize = () => {
+                        setWidth(window.innerWidth)
+                    }
+
+                    window.addEventListener('resize', handleResize)
+
+                    // Cleanup function
+                    return () => {
+                        window.removeEventListener('resize', handleResize)
+                    }
+                }, [])
+
+                return (
+                    <div>
+                        <h1>{width}</h1>
+                    </div>
+                )
+            }
+
+            export default Content
+
+    4. Cleanup
+        - Remove listener / Unsubscribe
+        - Clear timer
+    */
+
+    - Dùng useEffect khi muốn thực hiện Side effects(thuật ngữ chung trong lĩnh vực
+    lập trình phần mềm, nó nói tới một chương trình phần mềm khi có tác động xảy ra
+    nó dẫn tới việc dữ liệu của chương trình bị thay đổi)
+        // 1. useEffect(callback)
+        // - Gọi callback mỗi khi component re-render
+        // - Gọi callback sau khi component thêm element vào DOM
+        // 2. useEffect(callback, [])
+        // - Chỉ gọi callback 1 lần sau khi component mounted
+        // 3. useEffect(callback, [deps])
+        // - Callback sẽ được gọi lại mỗi khi deps thay đổi
+
+        // ---------------------------------------
+        // 1. Callback luôn được gọi sau khi component mounted
+        // 2. Cleanup function luôn được gọi trước khi component unmounted
+
+/*****        useEffect with timer functions       *****/
+    Events: Add / remove event listener
+    Observer pattern: Subscribe / unsubscribe
+    Closure
+    Timers: setInterval, setTimeout, clearInterval, clearTimeout
+    useState
+    Mounted / unmounted
+    ===
+    Call API
+
+    /**
+    1. Update DOM
+    2. Call API
+    3. Listen DOM events
+        - Scroll
+        - Resize
+    4. Cleanup
+        - Remove listener / Unsubscribe
+        - Clear timer
+    */
+
+    - Dùng useEffect khi muốn thực hiện Side effects(thuật ngữ chung trong lĩnh vực
+    lập trình phần mềm, nó nói tới một chương trình phần mềm khi có tác động xảy ra
+    nó dẫn tới việc dữ liệu của chương trình bị thay đổi)
+        // 1. useEffect(callback)
+        // - Gọi callback mỗi khi component re-render
+        // - Gọi callback sau khi component thêm element vào DOM
+        // 2. useEffect(callback, [])
+        // - Chỉ gọi callback 1 lần sau khi component mounted
+        // 3. useEffect(callback, [deps])
+        // - Callback sẽ được gọi lại mỗi khi deps thay đổi
+
+        // ---------------------------------------
+        // 1. Callback luôn được gọi sau khi component mounted
+        // 2. Cleanup function luôn được gọi trước khi component unmounted
+        // 3. Cleanup function luôn được gọi trước khi callback được gọi (trừ lần mounted)
+                import { useEffect, useState } from "react"
+
+                function Content() {
+                    const [count, setCount] = useState(1)
+
+                    useEffect(() => {
+                        console.log(`Mounted or re-render lần ${count}`)
+
+                        // Cleanup func
+                        return () => {
+                            console.log(`Cleanup lần ${count}`)
+                        }
+                    }, [count])
+
+                    return (
+                        <div>
+                            <h1>{count}</h1>
+                            <button
+                                onClick={() => setCount(count + 1)}
+                            >
+                                Click me!
+                            </button>
+                        </div>
+                    )
+                }
+
+                export default Content
+
+/*****        useEffect with preview avatar       *****/
+    import { useEffect, useState } from "react"
+
+    function Content() {
+        const [avatar, setAvatar] = useState()
+
+        useEffect(() => {
+            
+            // Cleanup
+            return () => {
+                avatar && URL.revokeObjectURL(avatar.preview)   // Xóa URL
+            }
+        }, [avatar])
+
+        const handlePreviewAvatar = (e) => {
+            const file = e.target.files[0]
+
+            file.preview = URL.createObjectURL(file)    // Tạo URL
+
+            setAvatar(file)
+
+            // Chọn nhiều lần trên một ảnh
+            e.target.value = null
+        }
+
+        return (
+            <div>
+                <input 
+                    type="file"
+                    onChange={handlePreviewAvatar}
+                />
+                {avatar && (
+                    <img src={avatar.preview} alt="rock.jpg" width="30%" />
+                )}
+            </div>
+        )
+    }
+
+    export default Content
+
+/*****        useEffect with fake Chat App       *****/
+    Events: Add / remove event listener
+    Observer pattern: Subscribe / unsubscribe
+    Closure
+    Timers: setInterval, setTimeout, clearInterval, clearTimeout
+    useState
+    Mounted / unmounted
+    ===
+    Call API
+
+    /**
+    1. Update DOM
+    2. Call API
+    3. Listen DOM events
+        - Scroll
+        - Resize
+    4. Cleanup
+        - Remove listener / Unsubscribe
+        - Clear timer
+    */
+
+    - Dùng useEffect khi muốn thực hiện Side effects(thuật ngữ chung trong lĩnh vực
+    lập trình phần mềm, nó nói tới một chương trình phần mềm khi có tác động xảy ra
+    nó dẫn tới việc dữ liệu của chương trình bị thay đổi)
+        // 1. useEffect(callback)
+        // - Gọi callback mỗi khi component re-render
+        // - Gọi callback sau khi component thêm element vào DOM
+        // 2. useEffect(callback, [])
+        // - Chỉ gọi callback 1 lần sau khi component mounted
+        // 3. useEffect(callback, [deps])
+        // - Callback sẽ được gọi lại mỗi khi deps thay đổi
+
+        // ---------------------------------------
+        // 1. Gọi callback sau khi component thêm element vào DOM
+        // 2. Callback luôn được gọi sau khi component mounted
+        // 3. Cleanup function luôn được gọi trước khi component unmounted
+        // 4. Cleanup function luôn được gọi trước khi callback được gọi (trừ lần mounted)
+        
+        // FQA
+        // 1. Callback gọi sau khi elements được mounted vào DOM
+        // 2. Phân biệt Mounted & Re-render
+        // 3. Có thể sử dụng nhiều dependencies, ít nhất 1 dependency thay đổi
+        // 4. Sử dụng dependencies khi nào?
+        // 5. Có nên viết nhiều logic khác nhau trong 1 useEffect?
+        // 6. Phân biệt cách truyền callback qua props
+        // 7. Khi setState cùng một giá trị thì component sẽ không re-render
+
+    import { useEffect, useState } from "react"
+
+    const lessons = [
+        {
+            id: 1,
+            name: 'ReactJS là gì? Tại sao nên học ReactJS',
+        },
+        {
+            id: 2,
+            name: 'SPA/MPA là gì?',
+        },
+        {
+            id: 3,
+            name: 'Arrow function',
+        },
+    ]
+
+    function Content() {
+        const [lessonId, setLessonId] = useState(1)
+
+        useEffect(() => {
+            const handleComment = ({ detail }) => {
+                console.log(detail);
+            }
+
+            window.addEventListener(`lesson-${lessonId}`, handleComment)
+
+            return () => {
+                window.removeEventListener(`lesson-${lessonId}`, handleComment)
+            }
+        }, [lessonId])
+
+        return (
+            <div>
+                <ul>
+                    {lessons.map(lesson => (
+                        <li
+                            key={lesson.id}
+                            style={{
+                                color: lessonId === lesson.id ?
+                                    'red' :
+                                    '#333'
+                            }}
+                            onClick={() => setLessonId(lesson.id)}
+                        >
+                            {lesson.name}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        )
+    }
+
+    export default Content
+
+/*****        useLayoutEffect hook       *****/
+    // useEffect
+    // 1. Cập nhật lại state
+    // 2. Cập nhật DOM (mutated)
+    // 3. Render lại UI
+    // 4. Gọi cleanup nếu deps thay đổi
+    // 5. Render lại UI
+
+    // useLayoutEffect
+    // 1. Cập nhật lại state
+    // 2. Cập nhật DOM (mutated)
+    // 3. Gọi cleanup nếu deps thay đổi (sync)
+    // 4. Gọi useLayoutEffect callback (sync)
+    // 5. Render lại UI
+
+    import { useEffect, useLayoutEffect, useState } from "react"
+
+    function Content() {
+        const [count, setCount] = useState(0)
+
+        useLayoutEffect(() => {
+            if (count > 3)
+                setCount(0)
+        }, [count])
+
+        const handleRun = () => {
+            setCount(count + 1)
+        }
+
+        return (
+            <div>
+                <h1>{count}</h1>
+                <button onClick={handleRun}>Run</button>
+            </div>
+        )
+    }
+
+    export default Content
+
+/*****        useRef hook       *****/
+    // Lưu các giá trị qua một tham chiếu bên ngoài function component
+    // Luôn trả về giá trị là một Object có property tên current
+
+
+    import { useEffect, useRef, useState } from "react"
+
+    function Content() {
+        const [count, setCount] = useState(60)
+
+        let timerId = useRef()
+
+        const handleStart = () => {
+            timerId.current = setInterval(() => {
+                setCount(prevCount => prevCount - 1)
+            }, 1000)
+
+            console.log('Start -> ', timerId.current);
+        }
+
+        const handleStop = () => {
+            clearInterval(timerId.current)
+
+            console.log('Stop -> ', timerId.current);
+        }
+
+        return (
+            <div>
+                <h1>{count}</h1>
+                <button onClick={handleStart}>Start</button>
+                <button onClick={handleStop}>Stop</button>
+            </div>
+        )
+    }
+
+    export default Content
+
+    // Kiểm tra giá trị trước sau
+        import { useEffect, useRef, useState } from "react"
+
+        function Content() {
+            const [count, setCount] = useState(60)
+
+            const timerId = useRef()
+            const prevCount = useRef()
+
+            useEffect(() => {
+                prevCount.current = count
+            }, [count])
+
+            const handleStart = () => {
+                timerId.current = setInterval(() => {
+                    setCount(prevCount => prevCount - 1)
+                }, 1000)
+
+                console.log('Start -> ', timerId.current);
+            }
+
+            const handleStop = () => {
+                clearInterval(timerId.current)
+
+                console.log('Stop -> ', timerId.current);
+            }
+
+            console.log(count, prevCount.current);
+
+            return (
+                <div>
+                    <h1>{count}</h1>
+                    <button onClick={handleStart}>Start</button>
+                    <button onClick={handleStop}>Stop</button>
+                </div>
+            )
+        }
+
+        export default Content
+
+    // Thường dùng lấy tọa độ, kích thước element, lưu DOM element
+        import { useEffect, useRef, useState } from "react"
+
+        function Content() {
+            const [count, setCount] = useState(60)
+
+            const timerId = useRef()
+            const prevCount = useRef()
+            const h1Ref = useRef()
+
+            useEffect(() => {
+                prevCount.current = count
+            }, [count])
+
+            useEffect(() => {
+                const rect = h1Ref.current.getBoundingClientRect()
+
+                console.log(rect);
+            })
+
+            const handleStart = () => {
+                timerId.current = setInterval(() => {
+                    setCount(prevCount => prevCount - 1)
+                }, 1000)
+
+                console.log('Start -> ', timerId.current);
+            }
+
+            const handleStop = () => {
+                clearInterval(timerId.current)
+
+                console.log('Stop -> ', timerId.current);
+            }
+
+            console.log(count, prevCount.current);
+
+            return (
+                <div>
+                    <h1 ref={h1Ref}>{count}</h1>
+                    <button onClick={handleStart}>Start</button>
+                    <button onClick={handleStop}>Stop</button>
+                </div>
+            )
+        }
+
+        export default Content
+
+/*****        React.memo HOC       *****/
+    // 1. memo() -> Higher Order Component (HOC)
+    // 2. useCallback()
+
+    // Hooks
+    // HOC
+    // Render props
+
+    // memo: nhận vào một component và sau đó nó check các props của component này
+    sau mỗi lần render có bị thay đổi hay không, một component về nguyên lý có thể
+    nhận vô số props chỉ cần có ít nhất một props bị thay đổi giá trị thì nó quyết
+    định cho component re-render, còn nếu không có props nào bị thay đổi thì nó sẽ
+    không re-render lại component này, memo sử dụng toán tử === để kiểm tra xem props
+    có bị thay đổi không
+    // memo: chỉ dùng khi cần thiết
+
+    App.js
+        import { useState } from 'react'
+        import Content from './Content'
+
+        function App() {
+        const [count, setCount] = useState(0)
+        const [count2, setCount2] = useState(0)
+
+        const increase = () => {
+            setCount(count + 1)
+        }
+
+        const increase2 = () => {
+            setCount2(count2 + 1)
+        }
+
+        return (
+            <div style={{padding: '10px 32px' }}>
+            <Content count={count}/>
+            <h1>{count}</h1>
+            <h1>{count2}</h1>
+            <button onClick={increase}>Click me!</button>
+            <button onClick={increase2}>Click me 2!</button>
+            </div>
+        );
+        }
+
+        export default App;
+
+    Content.js
+        import { memo } from "react"
+
+        function Content({ count }) {
+
+            console.log('re-render')
+
+            return (
+                <h2>HELLO ANH EM F8 {count}</h2>
+            )
+        }
+
+        export default memo(Content)
+
+/*****        useCallback hook       *****/
+    // 1. memo() -> Higher Order Component (HOC)
+    // 2. useCallback()
+        // - Reference types
+        // - React memo()
+
+    // useCallback khi gọi nó nó sẽ nhận 2 đối số đối số đầu tiên là callback, đối số
+    thứ 2 là một cái mảng có thể chứa các dependencies, mảng dependencies sẽ hoạt động
+    tương tự như useEffect, khi dependencies trống thì useCallback sẽ trả lại tham chiếu
+    trước đó thay vì tạo ra một cái hàm mới nó return lại chính cái tham chiếu đã tạo
+    ở cái lần mounted, nếu có dependencies mà dependencies thay đổi sau mỗi lần re-render
+    thì useCallback sẽ tạo ra callback mới và return về cái tham chiếu mới
+    // nếu đã sử dụng react memo để tránh component re-render không cần thiết thì
+    những cái function phải sử dụng useCallback, nếu không dùng react memo cho component
+    con thì không cần sử dụng useCallback
+
+    App.js
+        import { useState, useCallback } from 'react'
+        import Content from './Content'
+
+        function App() {
+        const [count, setCount] = useState(0)
+
+        const handleIncrease = useCallback(() => {
+            setCount(prevCount => prevCount + 1)
+        }, [])
+
+        return (
+            <div style={{padding: '10px 32px' }}>
+            <Content 
+                onIncrease={handleIncrease}
+            />
+            <h1>{count}</h1>
+            </div>
+        );
+        }
+
+        export default App;
+
+    Content.js
+        import { memo } from "react"
+
+        function Content({ onIncrease }) {
+
+            console.log('re-render')
+
+            return (
+                <>
+                    <h2>HELLO ANH EM F8</h2>
+                    <button onClick={onIncrease}>Click me!</button>
+                </>
+            )
+        }
+
+        export default memo(Content)
+
+/*****        useMemo hook       *****/
+    // memo dùng để tránh component re-render trong những tình huống không cần thiết
+    // useMemo giúp tránh thực hiện lại một cái logic nào đó không cần thiết
+    // useMemo có đối số đầu tiên là một cái callback, đối số thứ hai là một dependencies
+    nếu để dependencies rỗng thì nó chỉ tính toán một lần, tất cả những lần re-render
+    sau đó là nó chỉ trả về kết mà mà nó tính toán từ lần trước, nguyên tắc hoạt động
+    giống useEffect, useCallback, nếu truyền dependencies thì mỗi lần dependencies
+    thay đổi thì nó tính toán lại
+
+    import { useState, useMemo, useRef } from 'react'
+    import Content from './Content'
+
+    function App() {
+    const [name, setName] = useState('')
+    const [price, setPrice] = useState('')
+    const [products, setProducts] = useState([])
+
+    const nameRef = useRef()
+
+    const handleSubmit = () => {
+        setProducts([...products, {
+        name,
+        // price: Number(price),
+        // price: parseInt(price),
+        price: +price,
+        }])
+        setName('')
+        setPrice('')
+
+        nameRef.current.focus()
+    }
+
+    const total = useMemo(() => {
+        const result = products.reduce((result, prod) => {
+        console.log('Tinh toan lai...');
+        return result + prod.price
+        }, 0)
+
+        return result
+    }, [products]) 
+
+    return (
+        <div style={{padding: '10px 32px' }}>
+        <input
+            ref={nameRef}
+            value={name}
+            placeholder='Enter name...'
+            onChange={e => setName(e.target.value)}
+        />
+        <br />
+        <input
+            value={price}
+            placeholder='Enter price...'
+            onChange={e => setPrice(e.target.value)}
+        />
+        <br />
+        <button onClick={handleSubmit}>Add</button>
+        <br />
+        Total: {total}
+        <ul>
+            {products.map((product, index) => (
+            <li key={index}>{product.name} - {product.price}</li>
+            ))}
+        </ul>
+        </div>
+    );
+    }
+
+    export default App;
+
+/*****        useReducer hook       *****/
+    // useReducer nó cung cấp thêm một sự lựa chọn để sử dụng state trong function
+    component, khi gặp bất cứ 1 bài toán nào mà dùng useState giải quyết được thì dùng
+    useReducer cũng giải quyết được và ngược lại
+    // useState có thiên hướng sử dụng phù hợp hơn trong những component có state đơn
+    giản
+    // useReducer phù hợp hơn trong những tình huống mà state trở nên phức tạp hơn ví
+    dụ như là array có vài array con, object có vài object con, hoặc trong trường hợp
+    có nhiều state
+    // nguyên lý hoạt động của useReducer là khi component lần đầu chạy thì nó sẽ chạy
+    useReducer nhận reducer tạm để đấy nhưng chưa gọi reducer ngay, nó nhận giá trị khởi
+    tạo và return về một cái array(cái phần tử thứ nhất là giá trị khởi tạo, cái phần tử
+    thứ hai là một hàm và hàm này gọi là dispatch, lát sau dispatch sẽ được dùng để kích
+    hoạt một cái action)
+
+    // useState
+    // 1. Init state
+    // 2. Actions
+
+    // useReducer
+    // 1. Init state
+    // 2. Actions
+    // 3. Reducer: thực chất là một cái hàm hoạt động dựa trên nguyên tắc nhận đầu vào
+    và trả ra đầu ra mới, đầu vào của nó là nó sẽ nhận lại cái state hiện tại và một
+    cái hành động, khi sử dụng reducer mỗi khi reducer được gọi thì phải dựa vào cái
+    state hiện tại và cái hành động là gì để quyết định trả ra state mới là gì
+    // 4. Dispatch
+
+    import { useState, useReducer } from 'react'
+
+    // useReducer
+    // 1. Init state: 0
+    // 2. Actions: Up (state + 1) / Down (state - 1)
+    // 3. Reducer
+    // 4. Dispatch
+
+    // Init state
+    const initState = 0
+
+    // Actions
+    const UP_ACTION = 'up'
+    const DOWN_ACTION = 'down'
+
+    // Reducer
+    const reducer = (state, action) => {
+    console.log('reducer running...');
+    switch(action) {
+        case UP_ACTION:
+        return state + 1
+        case DOWN_ACTION:
+        return state - 1
+        default:
+        throw new Error('Invalid action')
+    }
+    }
+
+    function App() {
+    const [count, dispatch] = useReducer(reducer, initState)
+
+    return (
+        <div style={{padding: '10px 32px' }}>
+        <h1>{count}</h1>
+        <button
+            onClick={() => dispatch(DOWN_ACTION)}
+        >
+            Down
+        </button>
+        <button
+            onClick={() => dispatch(UP_ACTION)}
+        >
+            Up
+        </button>
+        </div>
+    );
+    }
+
+    export default App;
+
+/*****        Todo App with useReducer hook       *****/
+    import { useReducer, useRef } from 'react'
+
+    // useReducer
+    // 1. Init state
+    const initState = {
+    job: '',
+    jobs: []
+    }
+
+    // 2. Actions
+    const SET_JOB = 'set_job'
+    const ADD_JOB = 'add_job'
+    const DELETE_JOB = 'delete_job'
+
+    const setJob = payload => {
+    return {
+        type: SET_JOB,
+        payload
+    }
+    }
+
+    const addJob = payload => {
+    return {
+        type: ADD_JOB,
+        payload
+    }
+    }
+
+    const deleteJob = payload => {
+    return {
+        type: DELETE_JOB,
+        payload
+    }
+    }
+
+    // 3. Reducer
+    const reducer = (state, action) => {
+    console.log('Action: ', action);
+    console.log('Prev state: ', state);
+
+    let newState
+
+    switch(action.type) {
+        case SET_JOB:
+        newState = {
+            ...state,
+            job: action.payload
+        }
+        break
+        case ADD_JOB:
+        newState = {
+            ...state,
+            jobs: [...state.jobs, action.payload]
+        }
+        break
+        case DELETE_JOB:
+        const newJobs = [...state.jobs]
+
+        newJobs.splice(action.payload, 1)
+        
+        newState = {
+            ...state,
+            jobs: newJobs
+        }
+        break
+        default:
+        throw new Error('Invalid action.')
+    }
+
+    console.log('New state: ', newState);
+
+    return newState
+    }
+
+    // 4. Dispatch
+
+
+
+    function App() {
+    const [state, dispatch] = useReducer(reducer, initState)
+    const { job, jobs } = state
+
+    const inputRef = useRef()
+
+    const handleSubmit = () => {
+        dispatch(addJob(job))
+        dispatch(setJob(''))
+
+        inputRef.current.focus()
+    }
+
+    return (
+        <div style={{padding: '10px 32px' }}>
+        <h3>Todo</h3>
+        <input
+            ref={inputRef}
+            value={job}
+            placeholder='Enter todo...'
+            onChange={e => {
+            dispatch(setJob(e.target.value))
+            }}
+        />
+        <button onClick={handleSubmit}>Add</button>
+        <ul>
+            {jobs.map((job, index) => (
+            <li key={index}>
+                {job} 
+                <span onClick={() => dispatch(deleteJob(index))}>
+                &times;
+                </span>
+            </li>
+            ))}
+        </ul>
+        </div>
+    );
+    }
+
+    export default App;
+
+/*****        useReducer recap       *****/
+    // useReducer giúp bóc tách component ra những thành phần nhỏ hơn
+    ./todo
+
+/*****        useContext hook       *****/
+    // Context
+    // CompA => CompB => CompC
+
+    // 1. Create context
+    // 2. Provider
+    // 3. Consumer
+
+    // createContext() trả về một object có Provider và Consumer
+
+    // Theme: Dark / Light
+    index.js
+        import { ThemeProvider } from './ThemeContext';
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(
+        // <React.StrictMode>
+            <ThemeProvider>
+            <App />
+            </ThemeProvider>
+        // </React.StrictMode>
+        );
+
+    App.js
+        import { useContext } from "react"
+        import { ThemeContext } from "./ThemeContext"
+        import Content from './Content'
+        import './App.css'
+
+        function App() {
+        const context = useContext(ThemeContext)
+
+        return (
+            <div style={{ padding: 20 }}>
+            <button onClick={context.toggleTheme}>Toggle theme</button>
+            <Content />
+            </div>
+        )
+        }
+
+        export default App
+
+    Content.js
+        import Paragraph from './Paragraph'
+
+        function Content() {
+            return (
+                <div>
+                    <Paragraph />
+                </div>
+            )
+        }
+
+        export default Content
+
+    Paragraph.js
+        import { useContext } from "react"
+        import { ThemeContext } from "./ThemeContext"
+
+        function Paragraph() {
+
+            const context = useContext(ThemeContext)
+
+            return (
+                <p className={context.theme}>
+                    Nay F8 tạo nhóm "ReactJS Việt Nam" mới, với mong muốn mang lại môi trường tốt hơn cho việc chia sẻ, học tập kiến thức liên quan tới ReactJS tại Việt Nam
+                </p>
+            )
+        }
+
+        export default Paragraph
+
+    ThemeContext.js
+        import { useState, createContext } from 'react'
+
+        const ThemeContext = createContext()
+
+        function ThemeProvider({ children }) {
+            const [theme, setTheme] = useState('dark')
+
+            const toggleTheme = () => {
+                setTheme(theme === 'dark' ? 'light' : 'dark')
+            }
+
+            const value = {
+                theme,
+                toggleTheme
+            }
+
+            return (
+                <ThemeContext.Provider value={value}>
+                    {children}
+                </ThemeContext.Provider>
+            )
+        }
+
+        export { ThemeContext, ThemeProvider }
+
+/*****        Context + useReducer       *****/
+    # Redux vs React-context
+
+    1. Debugging capabilities
+    2. Middleware
+    4. Addons and extensibility
+    5. Cross-platform and cross-framework usage
+    6. Depending on your app's setup, much better performance than working with
+    just Context
+
+    index.js
+        import { StoreProvider } from './store';
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(
+        // <React.StrictMode>
+            <StoreProvider>
+            <App />
+            </StoreProvider>
+        // </React.StrictMode>
+        );
+
+    App.js
+        import { useStore, actions } from "./store";
+
+        function App() {
+        const [state, dispatch] = useStore()
+        const { todos, todoInput } = state
+
+        const handleAdd = () => {
+            dispatch(actions.addTodo(todoInput))
+        }
+
+        return (
+            <div>
+            <input
+                value={todoInput}
+                placeholder="Enter todo..."
+                onChange={e => {
+                dispatch(actions.setTodoInput(e.target.value))
+                }}
+            />
+            <button onClick={handleAdd}>Add</button>
+            {todos.map((todo, index) => (
+                <li key={index}>{todo}</li>
+            ))}
+            </div>
+        )
+        }
+
+        export default App
+
+    ./store
+
+/*****        useImperativeHandle hook       *****/
+    // useImperativeHandle giúp tùy chỉnh được grap của một function component
+    // Function component không có ref, sử dụng Higher Order Component forwardRef bao lấy
+    export default để lấy ref qua đối số thứ hai của function component, nhưng nó bị vi
+    phạm tính đóng gói của OOP, sử dụng useImperativeHandle để khắc phục
+    App.js
+        import { useRef } from 'react'
+        import Video from './Video'
+
+        function App() {
+        const videoRef = useRef()
+
+        const handlePlay = () => {
+            videoRef.current.play()
+        }
+        
+        const handlePause = () => {
+            videoRef.current.pause()
+        }
+
+        return (
+            <div>
+            <Video ref={videoRef} />
+            <button onClick={handlePlay}>Play</button>
+            <button onClick={handlePause}>Pause</button>
+            </div>
+        )
+        }
+
+        export default App
+
+    Video.js
+        import { forwardRef, useImperativeHandle, useRef } from 'react'
+        import video1 from './videos/video-1.mp4'
+
+        function Video(props, ref) {
+            const videoRef = useRef()
+
+            useImperativeHandle(ref, () => ({
+                play() {
+                    videoRef.current.play()
+                },
+                pause() {
+                    videoRef.current.pause()
+                }
+            }))
+
+            return (
+                <video
+                    ref={videoRef}
+                    src={video1}
+                    width={300}
+                />
+            )
+        }
+
+        export default forwardRef(Video )
+
+/*######################################################################################################################*/
+
+/**********         Bài 7 : CSS, SCSS và CSS modules        **********/
+
+/*****        Sử dụng CSS       *****/
+    // Development: npm start / yarn start -> CSS internal
+    // Production: npm run build / yarn build -> CSS external
+    ./components
+    App.js
+        import Heading from './components/Heading'
+
+        function App() {
+        return (
+            <div style={{ padding: '0 32px' }}>
+            <Heading />
+            </div>
+        )
+        }
+
+        export default App
+
+/*****        CSS module       *****/
+    // CSS module không có tính kế thừa, giải quyết bằng cách sử dụng CSS bình thường
+    và CSS module
+    // không nên sử dụng tag name để CSS
+    // đặt tên theo dạng camelCase
+
+/*****        Thư viện clsx và classnames       *****/
+    // clsx: là một hàm
+    className={clsx(styles.name1, styles.name2, {},...)}
+
+    ./Button/index.js
+        import clsx from 'clsx'
+        import styles from './Button.module.css'
+
+        function Button() {
+            return (
+                <>
+                    <button className={styles.btn}>
+                        Click me!
+                    </button>
+                    {/* <button className={`${styles.btn} ${styles.active}`} > */}
+                    {/* <button className={[styles.btn, styles.active].join(' ')} > */}
+                    <button className={clsx(styles.btn, {
+                        [styles.active]: true
+                    })} >
+                        Click me!
+                    </button>
+                </>
+            )
+        }
+
+        export default Button
+
+    // Ứng dụng clsx vào button bootstrap
+    App.js
+        import Button from './components/Button'
+        import GlobalStyles from './components/GlobalStyles'
+
+        function App() {
+        return (
+            <GlobalStyles>
+            <div style={{ padding: '10px 32px' }}>
+                <Button />
+                <Button primary />
+                <Button secondary />
+                <Button success />
+            </div>
+            </GlobalStyles>
+        )
+        }
+
+        export default App
+
+    ./Button/index.js
+        import clsx from 'clsx'
+        import styles from './Button.module.css'
+
+        function Button({ primary, secondary, success }) {
+            // const classes = clsx(styles.btn, 'd-flex', {
+            //     [styles.primary]: primary,
+            //     [styles.secondary]: secondary,
+            //     [styles.success]: success,
+            // })
+            
+            const classes = clsx(styles.btn, {
+                [styles.primary]: primary,
+                [styles.secondary]: secondary,
+                [styles.success]: success,
+                'd-flex': true,
+            })
+
+            return (
+                <button className={classes}>
+                    Click me!
+                </button>
+            )
+        }
+
+        export default Button
+
+    ./Button/Button.module.css
+        .btn {
+            padding: 4px 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .primary {
+            color: #fff;
+            background-color: #007bff;
+        }
+
+        .secondary {
+            color: #fff;
+            background-color: #6c757d;
+        }
+
+        .success {
+            color: #fff;
+            background-color: #28a745;
+        }
+
+/*****        Install SASS để dùng SCSS?       *****/
+    // Hỗ trợ cú pháp làm tổ
+    https://sass-lang.com/documentation/
+
+    App.js
+        import Button from './components/Button'
+        import GlobalStyles from './components/GlobalStyles'
+
+        function App() {
+        return (
+            <GlobalStyles>
+            <div style={{ padding: '10px 32px' }}>
+                <Button />
+                <Button primary />
+                <Button primary disabled/>
+            </div>
+            </GlobalStyles>
+        )
+        }
+
+        export default App
+
+    ./Button/index.js
+        import clsx from 'clsx'
+        import styles from './Button.module.scss'
+
+        function Button({ primary, disabled }) {
+            // const classes = clsx(styles.btn, 'd-flex', {
+            //     [styles.primary]: primary,
+            //     [styles.secondary]: secondary,
+            //     [styles.success]: success,
+            // })
+            
+            const classes = clsx(styles.btn, {
+                [styles.primary]: primary,
+                [styles.disabled]: disabled,
+            })
+
+            return (
+                <button className={classes}>
+                    Click me!
+                </button>
+            )
+        }
+
+        export default Button
+
+    ./Button/Button.module.scss
+        .btn {
+            padding: 4px 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+
+            &:hover {
+                cursor: pointer;
+                opacity: 0.9;
+            }
+        }
+
+        .primary {
+            color: #fff;
+            background-color: #007bff;
+        }
+
+        .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+/*######################################################################################################################*/
+
+/**********         Bài 8 : React Router V6        **********/
+
+/*****        Cài đặt và tạo router       *****/
+    // React Router DOM là một thư viện tạo ra cơ chế định tuyến cho những ứng dụng được
+    viết bởi ReactJS, định tuyến nghĩa là cho phép di chuyển qua lại giữa các trang nằm
+    bên trong một website
+    // Một website chỉ có một router, router chỉ tạo ra cơ chế định tuyến nội bộ
+
+    index.js
+        import { BrowserRouter as Router } from 'react-router-dom'
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(
+        // <React.StrictMode>
+            <Router>
+            <App />
+            </Router>
+        // </React.StrictMode>
+        );
+
+    App.js
+        import { Routes, Route, Link } from 'react-router-dom'
+        import HomePage from './pages/Home'
+        import NewsPage from './pages/News'
+        import ContactPage from './pages/Contact'
+
+        function App() {
+        return (
+            <div className="app">
+            <nav>
+                <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/news">News</Link>
+                </li>
+                <li>
+                    <Link to="/contact">Contact</Link>
+                </li>
+                </ul>
+            </nav>
+
+            <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/news' element={<NewsPage />} />
+            <Route path='/contact' element={<ContactPage />} />
+            </Routes>
+            </div>
+        )
+        }
+
+        export default App
+
+    ./pages/Home.js
+        function Home() {
+            return (
+                <h1>Home page</h1>
+            )
+        }
+
+        export default Home
+
+    ./pages/News.js
+        function Contact() {
+            return (
+                <h1>Contact page</h1>
+            )
+        }
+
+        export default Contact
+
+    ./pages/Contact.js
+        function News() {
+            return (
+                <h1>News page</h1>
+            )
+        }
+
+        export default News
+
+/*######################################################################################################################*/
+
+/**********         Bài 9 : MỞ RỘNG        **********/
+
+/*****        Tìm Hiểu Và Sử Dụng Thư Viện Axios Trong Dự Án ReactJS       *****/
+    // Axios là một thư viện giúp gọi API từ trình duyệt hoặc tự NodeJS
+        - Trên trình duyệt Axios sử dụng XMLHttpRequests để gửi API
+        - Trên Node.js sử dụng http để gọi API
+        - Hỗ trợ Promise
+        - Intercept(đánh chặn) request and response
+        - Transform(chuyển đổi) request and response data
+        - Hủy requests khi mà nó chưa hoàn thành
+        - Tự động chuyển đổi JSON data
+        - Tự động chuyển đổi mã hóa dữ liệu làm sao cho nó phù hợp với kiểu dữ liệu được
+        gửi đi
+        - Hỗ trợ dễ dàng cấu hình cho phòng chống hình thức tấn công XSRF(mạo danh)
+
+    // Cách 1
+    import axios from 'axios'
+
+    axios.get('URL', {
+        params: {
+            q: debounced,
+            type: 'less',
+        }
+    })
+        .then((res) => {
+            // Logic
+        })
+        .catch((res) => {
+            // Logic
+        })
+
+    // Cách 2
+    import axios from 'axios'
+
+    const request = axios.create({
+        baseURL: 'URL',
+    })
+
+    request
+        .get('path', {
+            params: {
+                q: debounced,
+                type: 'less',
+            }
+        })
+        .then((res) => {
+            // Logic
+        })
+        .catch((res) => {
+            // Logic
+        })
+
+/*****        Tìm Hiểu Thư Viện PropTypes Trong React       *****/
+    // Đây là một thư viện giúp kiểm tra kiểu dữ liệu cho nhưng props nằm trong React
+    component, nó sẽ kiểm tra luôn trong lúc chương trình chạy nên nếu có vấn đề xảy ra
+    thì nó sẽ warning luôn để fix kịp thời
+    // Sử dụng được với cả class và function component
+    // Cách dùng lấy tên Component.propTypes rồi gán cho nó một cái object, trong object
+    có thể có nhiều cặp key và value, những cái key chính là những props mà component
+    được nhận, còn value ProTypes.kdl để kiểm tra kiểu của nó
+    // Đặt biệt:
+        PropTypes.node: chấp nhận prop này là bất cứ kiểu gì render ra được, thường được
+        dùng cho prop children
+        PropTypes.node.isRequired: kiểm tra xem prop đã được truyền chưa
+
+/*****        Redux       *****/
+1. Redux là gì? Kiến trúc của nó ra sao?
+2. Khi nào cần sử dụng Redux?
+3. Redux có phải chỉ để dùng với ReactJS hay không?
+4. Code mẫu một ví dụ đơn giản sử dụng redux
+5. Các thư viện làm việc với redux
+
+1. Redux là gì? Kiến trúc của nó ra sao?
+    - Thư viện js quản lý state, mà state này có thể dự đoán được
+    - Sử dụng kiến trúc uni-directional data flow(flow data chỉ có một chiều)
+
+2. Khi nào cần sử dụng Redux?
+    - Dữ liệu được sử dụng ở nhiều nơi
+    - Có hỗ trợ chức năng undo / redo
+    - Cần cache dữ liệu để tái sử dụng cho những lần sau
+
+3. Redux có phải chỉ để dùng với ReactJS hay không?
+    - Redux được sử dụng cho các javascript apps
+    - Có thể là: ReactJS, Angular, VueJS, Pure javascript App, Other javascript app
+
+4. Code mẫu một ví dụ đơn giản sử dụng redux
+    import { createStore } from 'redux'
+
+    // Step 1: Define a reducer
+    function counter(state = 0, action) {
+        switch(action.type) {
+            case 'INCREMENT':
+                return state + 1
+            case 'DECREMENT':
+                return state - 1
+            default:
+                return state
+        }
+    }
+
+    // Step 2: Init your store with the reducer
+    // Its API is { subscribe, dispatch, getState }
+    // subscribe: callback được gọi mỗi lần state trên store thay đổi
+    // dispatch: để bắn đi những action thay đổi state
+    let store = createStore(counter)
+
+    // Step 3: Subscribe to state change to update UI
+    store.subscribe(() => console.log(store.getState()))
+
+    // Step 4: Dispatch action to update redux state
+    store.dispatch({ type: 'INCREMENT' }) // 1
+    store.dispatch({ type: 'INCREMENT' }) // 2
+    store.dispatch({ type: 'DECREMENT' }) // 1
+
+5. Các thư viện làm việc với redux
+    - Redux Logger: https://github.com/LogRocket/redux-logger
+    - Redux Persist: https://github.com/rt2zz/redux-persist
+    - Redux Undo: https://github.com/omnidan/redux-undo
+    - And many more: https://redux.js.org/introduction/ecosystem
+
+Lưu ý:
+    - Redux sử dụng kiến trúc 1 chiều: uni-directional data flow
+    - Redux chỉ dùng 1 store duy nhất làm Single Source of Truth
+    - Redux state là READ-ONLY. Muốn update phải dispatch một action (js object)
+    - Những thay đổi của redux state được thực hiện bởi Pure functions (reducer)
+    - Redux có thể dùng cho các javascript apps, không chỉriêng gì ReactJS.
+
+Hiện thực Redux
+    function createStore(reducer) {
+        let state = reducer(undefined, {})
+        const subscribers = []
+
+        return {
+            getState() {
+                return state;
+            },
+            dispatch(action) {
+                state = reduce(state, action)
+
+                subscribers.forEach(subscriber => subscriber())
+            },
+            subscribe(subscriber) {
+                subscribers.push(subscriber)
+            }
+        }
+    }
