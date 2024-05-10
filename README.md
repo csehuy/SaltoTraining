@@ -1,1 +1,1 @@
-# BKDiscovery
+# Salto Training
